@@ -20,7 +20,19 @@ int main(int argc, char **argv)
 	phone_number = ask("What is your phone_number");
 	darkest_secret = ask("What is your darkest_secret");
 
-	Contact contact = Contact(firstname, lastname, nickname, phone_number, darkest_secret);
+	Contact contact_1 = Contact(firstname, lastname, nickname, phone_number, darkest_secret);
+	Contact contact_2 = Contact("Joe", "Dalton", "Merci", "01314", "table");
+
+	PhoneBook perso = PhoneBook();
+	perso.add_contact(contact_2);
+	perso.add_contact(contact_1);
+
+	//========================================
+	for (int i = 0; i < perso.get_number_of_contact(); i++)
+	{
+		Contact one_contact = perso.get_one_contact(i);
+		std::cout << i << one_contact.get_firstname() << std::endl;
+	}
 
 	return 0;
 }
