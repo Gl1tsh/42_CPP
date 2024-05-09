@@ -20,5 +20,7 @@ int main(int argc, char **argv)
 	phone_number = ask("What is your phone_number");
 	darkest_secret = ask("What is your darkest_secret");
 
+	Contact contact = Contact(firstname, lastname, nickname, phone_number, darkest_secret);
+
 	return 0;
 }
