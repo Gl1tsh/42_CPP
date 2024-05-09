@@ -12,9 +12,13 @@ std::string ask(std::string question)
 
 int main(int argc, char **argv)
 {
-	std::string firstname;
+	std::string firstname, lastname, nickname, phone_number, darkest_secret;
 
 	firstname = ask("What is your firstname");
+	lastname = ask("What is your lastname");
+	nickname = ask("What is your nickname");
+	phone_number = ask("What is your phone_number");
+	darkest_secret = ask("What is your darkest_secret");
 
 	return 0;
 }
