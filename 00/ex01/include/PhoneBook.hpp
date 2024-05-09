@@ -5,7 +5,11 @@
 
 class PhoneBook
 {
+	public:
+		PhoneBook();
 
+	private:
+		Contact contacts[8];
 };
 
 #endif
