@@ -7,13 +7,15 @@ int main(int argc, char **argv)
 {
 	PhoneBook perso = PhoneBook();
 	perso.addContact(ask_contact());
+	perso.addContact(ask_contact());
 
 	//========================================
 	for (int i = 0; i < perso.getNumberOfContact(); i++)
-	{
-		Contact one_contact = perso.getOneContact(i);
-		std::cout << i << one_contact.getFirstname() << std::endl;
-	}
+		print_contact_for_search(i, perso.getOneContact(i));
+	std::cout << "Which one would you like (number of the index) ? : ";
+	int index_of_the_contact;
+	std::cin >> index_of_the_contact;
+	print_contact(perso.getOneContact(index_of_the_contact));
 
 	return 0;
 }
