@@ -22,3 +22,21 @@ Contact ask_contact()
 
 	return Contact(firstname, lastname, nickname, phone_number, darkest_secret);
 }
+
+void print_contact_for_search(int index, Contact one_contact)
+{
+	std::cout << index << " ";
+	std::cout << one_contact.getFirstname() << " ";
+	std::cout << one_contact.getLastname() << " ";
+	std::cout << one_contact.getNickname() << " ";
+	std::cout << std::endl;
+}
+
+void print_contact(Contact one_contact)
+{
+	std::cout << one_contact.getFirstname() << std::endl;
+	std::cout << one_contact.getLastname() << std::endl;
+	std::cout << one_contact.getNickname() << std::endl;
+	std::cout << one_contact.getPhoneNumber() << std::endl;
+	std::cout << one_contact.getDarkestSecret() << std::endl;
+}
