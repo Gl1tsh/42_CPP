@@ -3,12 +3,16 @@
 PhoneBook::PhoneBook()
 {
 	number_of_contact = 0;
+	insert_position = 0;
 }
 
 void PhoneBook::addContact(Contact the_contact)
 {
-	contacts[number_of_contact] = the_contact;
-	number_of_contact++;
+	contacts[insert_position] = the_contact;
+
+	insert_position = (insert_position + 1) % max_number_of_contact;
+	if (number_of_contact < max_number_of_contact)
+		number_of_contact++;
 }
 
 Contact PhoneBook::getOneContact(int index)

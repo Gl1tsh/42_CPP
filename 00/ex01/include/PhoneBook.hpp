@@ -12,8 +12,10 @@ class PhoneBook
 		int getNumberOfContact();
 
 	private:
-		Contact contacts[8];
+		static const int max_number_of_contact = 8;
+		Contact contacts[max_number_of_contact];
 		int number_of_contact;
+		int insert_position;
 };
 
 #endif
