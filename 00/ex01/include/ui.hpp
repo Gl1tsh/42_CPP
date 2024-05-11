@@ -7,5 +7,6 @@ Contact ask_contact();
 void print_contact_for_search(int index, Contact one_contact);
 void print_contact(Contact one_contact);
 void print_search_header();
+int	ask_number(std::string question, int max_number);
 
 #endif

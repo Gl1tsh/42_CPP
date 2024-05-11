@@ -1,7 +1,26 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include "Contact.hpp"
+
+int	ask_number(std::string question, int max_number)
+{
+	std::string answer;
+
+	while (true)
+	{
+		std::cout << question << "?: ";
+		std::getline(std::cin, answer);
+		std::istringstream iss(answer);
+		int number;
+		if (iss >> number)
+		{
+			if (number >= 0 && number < max_number)
+				return number;
+		}
+	}
+}
 
 std::string ask(std::string question)
 {

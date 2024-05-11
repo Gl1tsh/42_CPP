@@ -21,9 +21,7 @@ int main(int argc, char **argv)
 			for (int i = 0; i < perso.getNumberOfContact(); i++)
 				print_contact_for_search(i, perso.getOneContact(i));
 			std::cout << std::endl;
-			std::cout << "Which one would you like (number of the index) ? : ";
-			int index_of_the_contact;
-			std::cin >> index_of_the_contact;
+			int index_of_the_contact = ask_number("Which one would you like (number of the index)", perso.getNumberOfContact());
 			print_contact(perso.getOneContact(index_of_the_contact));
 		}
 	} while (command != "EXIT");
