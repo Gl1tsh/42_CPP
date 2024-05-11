@@ -5,8 +5,14 @@
 std::string ask(std::string question)
 {
 	std::string answer;
-	std::cout << question << "?: ";
-	std::cin >> answer;
+
+	do
+	{
+		std::cout << question << "?: ";
+		std::getline(std::cin, answer);
+		// https://stackoverflow.com/questions/6444842/efficient-way-to-check-if-stdstring-has-only-spaces
+	} while (answer.find_first_not_of(" \t\n\r\f\v") == std::string::npos);
+
 	return answer;
 }
 
