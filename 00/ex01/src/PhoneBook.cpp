@@ -5,18 +5,18 @@ PhoneBook::PhoneBook()
 	position = 0;
 }
 
-void PhoneBook::add_contact(Contact the_contact)
+void PhoneBook::addContact(Contact the_contact)
 {
 	contacts[position] = &the_contact;
 	position++;
 }
 
-Contact PhoneBook::get_one_contact(int index)
+Contact PhoneBook::getOneContact(int index)
 {
 	return *contacts[index];
 }
 
-int PhoneBook::get_number_of_contact()
+int PhoneBook::getNumberOfContact()
 {
 	return position;
 }

@@ -24,14 +24,14 @@ int main(int argc, char **argv)
 	Contact contact_2 = Contact("Joe", "Dalton", "Merci", "01314", "table");
 
 	PhoneBook perso = PhoneBook();
-	perso.add_contact(contact_2);
-	perso.add_contact(contact_1);
+	perso.addContact(contact_2);
+	perso.addContact(contact_1);
 
 	//========================================
-	for (int i = 0; i < perso.get_number_of_contact(); i++)
+	for (int i = 0; i < perso.getNumberOfContact(); i++)
 	{
-		Contact one_contact = perso.get_one_contact(i);
-		std::cout << i << one_contact.get_firstname() << std::endl;
+		Contact one_contact = perso.getOneContact(i);
+		std::cout << i << one_contact.getFirstname() << std::endl;
 	}
 
 	return 0;
