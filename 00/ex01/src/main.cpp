@@ -3,7 +3,7 @@
 #include "ui.hpp"
 #include <iostream>
 
-int main(int argc, char **argv)
+int main()
 {
 	PhoneBook perso = PhoneBook();
 
