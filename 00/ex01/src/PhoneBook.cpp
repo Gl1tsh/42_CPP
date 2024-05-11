@@ -2,13 +2,13 @@
 
 PhoneBook::PhoneBook()
 {
-	position = 0;
+	number_of_contact = 0;
 }
 
 void PhoneBook::addContact(Contact the_contact)
 {
-	contacts[position] = &the_contact;
-	position++;
+	contacts[number_of_contact] = &the_contact;
+	number_of_contact++;
 }
 
 Contact PhoneBook::getOneContact(int index)
@@ -18,5 +18,5 @@ Contact PhoneBook::getOneContact(int index)
 
 int PhoneBook::getNumberOfContact()
 {
-	return position;
+	return number_of_contact;
 }

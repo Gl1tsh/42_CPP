@@ -13,7 +13,7 @@ class PhoneBook
 
 	private:
 		Contact* contacts[8];
-		int position;
+		int number_of_contact;
 };
 
 #endif
