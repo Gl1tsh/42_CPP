@@ -12,7 +12,7 @@ class PhoneBook
 		int getNumberOfContact();
 
 	private:
-		Contact* contacts[8];
+		Contact contacts[8];
 		int number_of_contact;
 };
 
