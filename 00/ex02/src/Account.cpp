@@ -40,7 +40,10 @@ Account::Account(int initial_deposit)
 // Destructor
 Account::~Account()
 {
-
+	Account::_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";"
+			  << "amount:" << _amount << ";"
+			  << "closed" << std::endl;
 }
 
 int Account::getNbAccounts(void)
