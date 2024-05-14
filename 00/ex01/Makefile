@@ -1,8 +1,7 @@
 NAME = PhoneBook
 
 CC = c++
-#FLAGS = -Wall -Wextra -Werror -I./include -std=c++98
-FLAGS = -Wall -Wextra -I./include -std=c++98 
+FLAGS = -Wall -Wextra -Werror -I./include -std=c++98
 
 OBJDIR = obj/
 SRCDIR = src/
