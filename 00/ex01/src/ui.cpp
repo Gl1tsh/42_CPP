@@ -12,9 +12,9 @@ int	ask_number(std::string question, int max_number)
 	{
 		std::cout << question << "?: ";
 		std::getline(std::cin, answer);
-		std::istringstream iss(answer);
+		std::istringstream string_as_stream(answer);
 		int number;
-		if (iss >> number)
+		if (string_as_stream >> number)
 		{
 			if (number >= 0 && number < max_number)
 				return number;
