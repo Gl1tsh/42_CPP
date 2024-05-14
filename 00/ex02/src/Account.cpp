@@ -75,7 +75,10 @@ void Account::displayAccountsInfos(void)
 
 void Account::makeDeposit(int deposit)
 {
-
+	_amount += deposit;
+	_totalAmount += deposit;
+	_nbDeposits++;
+	_totalNbDeposits++;
 }
 
 bool Account::makeWithdrawal(int withdrawal)
