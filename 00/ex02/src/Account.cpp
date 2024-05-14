@@ -23,10 +23,13 @@ Account::Account()
 // Constructor
 Account::Account(int initial_deposit)
 {
-	_accountIndex = 0;
+	_accountIndex = _nbAccounts;
 	_amount = initial_deposit;
 	_nbDeposits = 0;
 	_nbWithdrawals = 0;
+
+	_nbAccounts++;
+	_totalAmount += _amount;
 
 	Account::_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";"
@@ -42,22 +45,22 @@ Account::~Account()
 
 int Account::getNbAccounts(void)
 {
-	return 1;
+	return _nbAccounts;
 }
 
 int Account::getTotalAmount(void)
 {
-	return 1;
+	return _totalAmount;
 }
 
 int Account::getNbDeposits(void)
 {
-	return 1;
+	return _totalNbDeposits;
 }
 
 int Account::getNbWithdrawals(void)
 {
-	return 1;
+	return _totalNbWithdrawals;
 }
 
 void Account::displayAccountsInfos(void)
@@ -77,12 +80,12 @@ void Account::makeDeposit(int deposit)
 
 bool Account::makeWithdrawal(int withdrawal)
 {
-	return true;
+
 }
 
 int Account::checkAmount(void) const
 {
-	return 1;
+	return _amount;
 }
 
 void Account::displayStatus(void) const
