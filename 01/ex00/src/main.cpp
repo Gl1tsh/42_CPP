@@ -8,6 +8,7 @@ int main()
 	chien = newZombie("Jaques");
 	chien->announce();
 	delete chien;
+	std::cout << std::endl;
 
 	// zombie created on stack and auto-destroyed
 	randomChump("Didier");
