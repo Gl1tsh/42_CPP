@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 #include <iostream>
 
-const int NUMBER_OF_ZOMBIE = 2;
+const int NUMBER_OF_ZOMBIE = 10;
 
 int main()
 {
