@@ -9,7 +9,7 @@ int main()
 
 	horde = zombieHorde(NUMBER_OF_ZOMBIE, "Didier");
 
-	for (int i = 0; i <= NUMBER_OF_ZOMBIE; i++)
+	for (int i = 0; i < NUMBER_OF_ZOMBIE; i++)
 		horde->announce();
 
 	delete [] horde;
