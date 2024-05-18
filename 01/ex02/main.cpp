@@ -19,3 +19,31 @@ int main()
 
 	return 0;
 }
+
+// EXPLICATION
+//=====================
+/*
+
+
+
+
+Le & cree un alias depuis un varible existante
+si la variable source est modifier, l'alias egalement
+ATTENTION : ce n'est pas un clone ou double
+
+exemple:
+std::string bonjour = "salut"
+std::string& hello = bonjour
+
+resultat : hello est egal a "salut"
+
+
+Le pointeur, peux pointer sur une zone memoire meme si elle est NULL
+Le pointeur n'a pas besoin d'etre lier a une variable existante
+
+exemple:
+char *salut
+printf(%p, salut)
+resultat sera la zone memoire
+
+*/
