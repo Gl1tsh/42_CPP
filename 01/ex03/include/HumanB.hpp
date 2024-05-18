@@ -7,6 +7,7 @@ class HumanB
 {
 
 public:
+	HumanB();
 	void attack(std::string weapon_type);
 
 private:

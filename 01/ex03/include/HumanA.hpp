@@ -7,6 +7,7 @@ class HumanA
 {
 
 public:
+	HumanA(std::string wich_weapon);
 	void attack(std::string weapon_type);
 
 private:
