@@ -31,10 +31,11 @@ int main(int argc, char **argv)
 	std::string::size_type pos;
 
 	pos = line.find(search);
-	if (pos != std::string::npos)
+	while (pos != std::string::npos)
 	{
 		line.erase(pos, search.size());
 		line.insert(pos, replace);
+		pos = line.find(search, pos + replace.size());
 	}
 	std::cout << line << std::endl;
 	return 0;
