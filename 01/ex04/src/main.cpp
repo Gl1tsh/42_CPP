@@ -35,10 +35,16 @@ int main(int argc, char **argv)
 			std::cout << "Cannot open " << filename << std::endl;
 			return 1;
 		}
+		std::fstream outfile(filename + ".replace", std::ios::out | std::ios::trunc);
+		if (!outfile.is_open())
+		{
+			std::cout << "Cannot create " << filename + ".replace" << std::endl;
+			return 1;
+		}
 
 		std::string line;
 		while (std::getline(file, line))
-			std::cout << replace_me(line, search, replace) << std::endl;
+			outfile << replace_me(line, search, replace) << std::endl;
 	}
 	return 0;
 }
