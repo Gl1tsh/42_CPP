@@ -2,16 +2,17 @@
 #define HUMANA_HPP
 
 #include <string>
+#include "Weapon.hpp"
 
 class HumanA
 {
 
 public:
-	HumanA(std::string wich_weapon);
-	void attack(std::string weapon_type);
+	HumanA(Weapon weapon);
+	void attack();
 
 private:
-	std::string Weapon;
+	Weapon weapon;
 	std::string name;
 
 };

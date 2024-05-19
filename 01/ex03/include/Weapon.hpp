@@ -7,11 +7,22 @@ class Weapon
 {
 
 public:
-	const std::string& getType(std::string type);
-	std::string setType(std::string type);
+	std::string& getType() const;
+	void setType(std::string type);
 
 private:
 	std::string type;
 };
 
 #endif
+
+
+/*
+
+Memo getter and setter
+
+for get : need to return something and nothing as parameters
+for set : 90% do not return something, add one parameters is the new value
+
+
+*/
