@@ -1,6 +1,17 @@
 #include "HumanB.hpp"
+#include <iostream>
 
-void HumanB::attack(std::string weapon_type)
+HumanB::HumanB(std::string one_name)
 {
+	name = one_name;
+}
 
+void HumanB::setWeapon(Weapon the_weapon)
+{
+	weapon = the_weapon;
+}
+
+void HumanB::attack()
+{
+	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
 }
