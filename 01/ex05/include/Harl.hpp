@@ -1,11 +1,13 @@
 #ifndef HARL_HPP
 #define HARL_HPP
 
+#include <string>
+
 class Harl
 {
-
 public:
-	void    complain(std::string level);
+	Harl();
+	void complain(std::string level);
 
 private:
 	void debug();
@@ -13,6 +15,9 @@ private:
 	void warning();
 	void error();
 
+	typedef void (Harl::*function_ptr)();
+	std::string keys[4];
+	function_ptr values[4];
 };
 
 #endif
