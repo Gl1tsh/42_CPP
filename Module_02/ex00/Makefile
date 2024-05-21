@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = mon_premier_canon
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -I./include -std=c++98
