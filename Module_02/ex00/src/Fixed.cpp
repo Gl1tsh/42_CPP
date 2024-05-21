@@ -9,9 +9,8 @@ Fixed::Fixed()
 
 Fixed::Fixed(const Fixed& other)
 {
-	(void)other;
 	std::cout << "Copy constructor called" << std::endl;
-
+	this->value = other.value;
 }
 
 Fixed::~Fixed()
@@ -21,8 +20,8 @@ Fixed::~Fixed()
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	(void)other;
 	std::cout << "Copy assignment operator called" << std::endl;
+	this->value = other.value;
 	return *this;
 }
 
