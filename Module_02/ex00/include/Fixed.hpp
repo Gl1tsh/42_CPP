@@ -3,11 +3,18 @@
 
 class Fixed
 {
-
 public:
+	Fixed();
+	Fixed(const Fixed& other);
+	~Fixed();
+	Fixed& operator=(const Fixed& other);
+
+	int getRawBits() const;
+	void setRawBits(int const raw);
 
 private:
-
+	int value;
+	const static int frac_bit = 8;
 };
 
 #endif
