@@ -22,9 +22,6 @@ public:
 private:
 	int value;
 	const static int frac_bit = 8;
-	//cannot do this because of GNU extension : const static float low_frac_value = 0.00390625; // this value is 2 power -(frac_bit)
-	#define low_frac_value 0.00390625 // this value is 2 power -(frac_bit)
-
 };
 
 #endif
