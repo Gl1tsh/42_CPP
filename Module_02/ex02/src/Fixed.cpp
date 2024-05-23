@@ -103,7 +103,7 @@ bool Fixed::operator>(const Fixed& right) const
 
 
 
-// incrementation operator
+// incrementation operator ===============
 
 Fixed& Fixed::operator++()
 {
@@ -130,6 +130,30 @@ Fixed Fixed::operator--(int)
 	this->value--;
 	return answer;
 }
+
+
+// min max ===============
+
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+	return a < b ? a : b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+	return a > b ? a : b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+	return a < b ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+	return a > b ? a : b;
+}
+
 
 
 std::ostream& operator<<(std::ostream& os, const Fixed& value)
