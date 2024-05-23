@@ -40,7 +40,8 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return *this;
 }
 
-// Operator ===============
+
+// arithmetic operator ===============
 
 Fixed Fixed::operator+(const Fixed& right) const
 {
@@ -66,6 +67,9 @@ Fixed Fixed::operator/(const Fixed& right) const
 	return Fixed(this->toFloat() / right.toFloat());
 }
 
+
+
+// comparison operator ===============
 
 bool Fixed::operator==(const Fixed& right) const
 {
@@ -95,6 +99,36 @@ bool Fixed::operator<(const Fixed& right) const
 bool Fixed::operator>(const Fixed& right) const
 {
 	return this->value > right.value;
+}
+
+
+
+// incrementation operator
+
+Fixed& Fixed::operator++()
+{
+	this->value++;
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed answer(*this);
+	this->value++;
+	return answer;
+}
+
+Fixed& Fixed::operator--()
+{
+	this->value--;
+	return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed answer(*this);
+	this->value--;
+	return answer;
 }
 
 

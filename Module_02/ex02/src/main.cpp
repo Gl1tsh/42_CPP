@@ -19,11 +19,11 @@ int main()
 	std::cout << (b<c) << std::endl;
 	std::cout << (b>c) << std::endl;
 	
-	// std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	// std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	// std::cout << a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
 
 	std::cout << b << std::endl;
 
