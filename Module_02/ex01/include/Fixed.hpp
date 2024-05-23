@@ -12,7 +12,7 @@ public:
 	Fixed(const float value);
 	~Fixed();
 	Fixed& operator=(const Fixed& other);
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& value);
+	friend std::ostream& operator<<(std::ostream& os, const Fixed& value);
 
 	float toFloat() const;
 	int toInt() const;
