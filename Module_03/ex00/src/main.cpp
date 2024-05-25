@@ -6,8 +6,8 @@ int main()
 	ClapTrap sabushi("sabushi");
 
 	yuno.attack(sabushi);
-	sabushi.takeDamage(3);
-	sabushi.beRepaired(15);
+	sabushi.takeDamage(15);
+	sabushi.beRepaired(12);
 
 	return 0;
 }
