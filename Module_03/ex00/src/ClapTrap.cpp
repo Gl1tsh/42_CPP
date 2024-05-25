@@ -19,12 +19,12 @@ bool ClapTrap::alive() const
 	return this->hitPoint > 0;
 }
 
-void ClapTrap::attack(ClapTrap& target)
+void ClapTrap::attack(const std::string& target)
 {
 	if (alive() && energyPoint != 0)
 	{
 		energyPoint -= 1;
-		std::cout << name << " attack " << target.getName();
+		std::cout << name << " attack " << target;
 		std::cout << " | total energy point : " << energyPoint << std::endl;
 	}
 	else if (!alive())
