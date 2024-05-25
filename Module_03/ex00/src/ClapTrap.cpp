@@ -56,7 +56,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << name << " have now : " << hitPoint << " hitPoint" << std::endl;	
 	}
 	else if (!alive())
-		std::cout << "the character is : cannot heal" << std::endl;
+		std::cout << "the character is dead : cannot heal" << std::endl;
 	else
 		std::cout << "not enough energy point : cannot heal" << std::endl;
 }
