@@ -21,21 +21,30 @@ bool ClapTrap::alive() const
 
 void ClapTrap::attack(ClapTrap& target)
 {
-	if (target.alive())
-		std::cout << name << " attack " << target.getName() << std::endl;
-	else
+	if (alive() && energyPoint != 0)
+	{
+		energyPoint -= 1;
+		std::cout << name << " attack " << target.getName();
+		std::cout << " | total energy point : " << energyPoint << std::endl;
+	}
+	else if (!alive())
 		std::cout << name << " is dead, cannot attack" << std::endl;
+	else
+		std::cout << "not enough energy point : cannot heal" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	this->attackDamage = amount;
-	this->hitPoint -= attackDamage;
 	std::cout << name << " being attack" << std::endl; 
-	if (hitPoint <= 0)
+	if (hitPoint <= amount)
 	{
 		hitPoint = 0;
 		std::cout << name << " he is dead" << std::endl;
+	}
+	else
+	{
+		this->hitPoint -= attackDamage;
 	}
 }
 
