@@ -30,13 +30,13 @@ void ClapTrap::attack(const std::string& target)
 	else if (!alive())
 		std::cout << name << " is dead, cannot attack" << std::endl;
 	else
-		std::cout << "not enough energy point : cannot heal" << std::endl;
+		std::cout << "not enough energy point : cannot attack" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	this->attackDamage = amount;
-	std::cout << name << " being attack" << std::endl; 
+	std::cout << name << " being attack and take : " << amount << " damage" << std::endl;
 	if (hitPoint <= amount)
 	{
 		hitPoint = 0;
@@ -58,8 +58,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << name << " heal : " << amount;
 		std::cout << "| total energy point : " << energyPoint << std::endl;
 
-		if (energyPoint <= 0)
-			this->energyPoint = 0;
 		if (hitPoint >= 10)
 			this->hitPoint = 10;
 		std::cout << name << " have now : " << hitPoint << " hitPoint" << std::endl;	
