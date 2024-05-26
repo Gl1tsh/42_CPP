@@ -8,6 +8,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->name = name;
 	this->hitPoint = 10;
 	this->energyPoint = 10;
+	this->attackDamage = 0;
 }
 
 ClapTrap::~ClapTrap()
@@ -18,6 +19,11 @@ ClapTrap::~ClapTrap()
 std::string ClapTrap::getName()
 {
 	return this->name;
+}
+
+unsigned int ClapTrap::getAttackDamage()
+{
+	return this->attackDamage;
 }
 
 bool ClapTrap::alive() const
@@ -41,7 +47,6 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	this->attackDamage = amount;
 	std::cout << name << " being attack and take : " << amount << " damage" << std::endl;
 	if (hitPoint <= amount)
 	{
@@ -50,7 +55,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 	{
-		this->hitPoint -= attackDamage;
+		this->hitPoint -= amount;
 	}
 }
 
