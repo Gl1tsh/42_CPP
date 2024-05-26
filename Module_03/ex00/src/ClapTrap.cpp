@@ -4,9 +4,15 @@
 
 ClapTrap::ClapTrap(std::string name)
 {
+	std::cout << "constructor called : " << name << std::endl;
 	this->name = name;
 	this->hitPoint = 10;
 	this->energyPoint = 10;
+}
+
+ClapTrap::~ClapTrap()
+{
+	std::cout << "destructor called : " << name << std::endl;
 }
 
 std::string ClapTrap::getName()
