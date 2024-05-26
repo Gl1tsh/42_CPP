@@ -9,6 +9,11 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->energyPoint = 50;
 	this->attackDamage = 20;
 }
+void ScavTrap::attack(const std::string& target)
+{
+	std::cout << "ScavTrap attacking... " << std::endl;
+	ClapTrap::attack(target);
+}
 
 ScavTrap::~ScavTrap()
 {
