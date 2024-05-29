@@ -4,14 +4,14 @@
 Zombie* zombieHorde(int N, std::string name)
 {
 	Zombie* horde = new Zombie[N];
-	Zombie* horde_total = horde;
+	int i = 0;
 
-	while (N >= 0)
+
+	while (i < N)
 	{
-		horde->setName(name);
-		horde++;
-		N--;
+		horde[i].setName(name);
+		i++;
 	}
 
-	return horde_total;
+	return horde;
 }
