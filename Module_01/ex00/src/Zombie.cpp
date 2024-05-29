@@ -1,6 +1,10 @@
 #include "Zombie.hpp"
 #include <iostream>
 
+Zombie::Zombie()
+{
+}
+
 Zombie::~Zombie()
 {
 	std::cout << name << ": George A Romero set me free..." << std::endl;

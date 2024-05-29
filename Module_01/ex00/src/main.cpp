@@ -4,8 +4,7 @@
 int main()
 {
 	// create zombie on heap
-	Zombie* chien;
-	chien = newZombie("Jaques");
+	Zombie* chien = newZombie("Jaques");
 	chien->announce();
 	delete chien;
 	std::cout << std::endl;
