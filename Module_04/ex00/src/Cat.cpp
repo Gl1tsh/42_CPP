@@ -3,6 +3,7 @@
 
 Cat::Cat()
 {
+	type = "Cat";
 	std::cout << "Cat : default constructor called : " << std::endl;
 }
 
@@ -18,5 +19,6 @@ Cat::~Cat()
 
 Cat& Cat::operator=(Cat& )
 {
+
 	return *this;
 }

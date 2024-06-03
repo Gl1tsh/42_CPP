@@ -3,6 +3,7 @@
 
 Dog::Dog()
 {
+	type = "Dog";
 	std::cout << "Dog : default constructor called : " << std::endl;
 }
 
