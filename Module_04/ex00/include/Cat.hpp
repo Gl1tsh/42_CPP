@@ -12,6 +12,9 @@ public:
 	~Cat();
 	Cat& operator=(Cat& source);
 
+	void makeSound() const;
+
+
 protected:
 
 };

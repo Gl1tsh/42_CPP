@@ -9,11 +9,11 @@ class Animal
 public:
 	Animal();
 	Animal(Animal& source);
-	~Animal();
+	virtual ~Animal();
 	Animal& operator=(Animal& source);
 
 	std::string getType() const;
-	void makeSound() const;
+	virtual void makeSound() const;
 
 protected:
 	std::string type;

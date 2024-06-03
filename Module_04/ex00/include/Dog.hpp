@@ -12,6 +12,8 @@ public:
 	~Dog();
 	Dog& operator=(Dog& source);
 
+	void makeSound() const;
+
 protected:
 
 };
