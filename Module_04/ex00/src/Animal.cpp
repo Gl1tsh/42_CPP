@@ -18,8 +18,9 @@ Animal::~Animal()
 	std::cout << "Animal : destructor called : " << std::endl;
 }
 
-Animal& Animal::operator=(Animal& )
+Animal& Animal::operator=(Animal& source)
 {
+	type = source.type;
 	return *this;
 }
 

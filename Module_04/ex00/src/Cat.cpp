@@ -17,9 +17,9 @@ Cat::~Cat()
 	std::cout << "Cat : destructor called : " << std::endl;
 }
 
-Cat& Cat::operator=(Cat& )
+Cat& Cat::operator=(Cat& source)
 {
-
+	Animal::operator=(source);
 	return *this;
 }
 
