@@ -2,18 +2,44 @@
 #include <iostream>
 
 
+ClapTrap::ClapTrap()
+{
+	std::cout << "ClapTrap : default constructor called : " << name << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "ClapTrap constructor called : " << name << std::endl;
+	std::cout << "ClapTrap : overload constructor called : " << name << std::endl;
 	this->name = name;
 	this->hitPoint = 10;
 	this->energyPoint = 10;
 	this->attackDamage = 0;
 }
 
+
+ClapTrap::ClapTrap(ClapTrap& other)
+{
+	std::cout << "ClapTrap : copy constructor called : " << name << std::endl;
+	this->name = other.name;
+	this->hitPoint = other.hitPoint;
+	this->energyPoint = other.energyPoint;
+	this->attackDamage = other.attackDamage;
+}
+
+
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap destructor called : " << name << std::endl;
+	std::cout << "ClapTrap : destructor called : " << name << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
+{
+	std::cout << "ClapTrap : operator called : " << name << std::endl;
+	this->name = other.name;
+	this->hitPoint = other.hitPoint;
+	this->energyPoint = other.energyPoint;
+	this->attackDamage = other.attackDamage;
+	return *this;
 }
 
 std::string ClapTrap::getName()
