@@ -12,6 +12,9 @@ public:
 	~Animal();
 	Animal& operator=(Animal& source);
 
+	std::string getType() const;
+	void makeSound() const;
+
 protected:
 	std::string type;
 
