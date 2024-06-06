@@ -4,12 +4,12 @@
 
 ClapTrap::ClapTrap()
 {
-	print_default_constructor(name);
+	print_default_constructor_claptrap(name);
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
-	print_overload_constructor(name);
+	print_overload_constructor_claptrap(name);
 	this->name = name;
 	this->hitPoint = 10;
 	this->energyPoint = 10;
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(ClapTrap& other)
 {
-	print_copy_constructor(name);
+	print_copy_constructor_claptrap(name);
 	this->name = other.name;
 	this->hitPoint = other.hitPoint;
 	this->energyPoint = other.energyPoint;
@@ -29,12 +29,12 @@ ClapTrap::ClapTrap(ClapTrap& other)
 
 ClapTrap::~ClapTrap()
 {
-	print_destructor(name);
+	print_destructor_claptrap(name);
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-	print_operator(name);
+	print_operator_claptrap(name);
 	this->name = other.name;
 	this->hitPoint = other.hitPoint;
 	this->energyPoint = other.energyPoint;

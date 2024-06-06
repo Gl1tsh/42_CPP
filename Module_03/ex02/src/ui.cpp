@@ -1,8 +1,9 @@
 #include "ui.hpp"
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 
-// Coplien ========================
+// claptrap Coplien ========================
 void print_default_constructor_claptrap(std::string name)
 {
 	std::cout << "claptrap default constructor called : " << name << std::endl;
@@ -27,7 +28,6 @@ void print_operator_claptrap(std::string name)
 {
 	std::cout << "claptrap operator called : " << name << std::endl;
 }
-
 
 
 // Activity ========================
@@ -65,6 +65,19 @@ void print_no_energy_point_for_heal(std::string name)
 void print_hitpoint_left(std::string name, unsigned int hitPoint)
 {
 	std::cout << name << " have now : " << hitPoint << " hitPoint" << std::endl;
+}
+
+
+
+// scavtrap activity ========================
+void print_scavtrap_attack()
+{
+	std::cout << "ScavTrap attacking... " << std::endl;
+}
+
+void print_scavtrap_guardGate()
+{
+	std::cout << " is now in Gatekeeper mode" << std::endl;
 }
 
 

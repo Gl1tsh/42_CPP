@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+#include "ui.hpp"
 
 #include <iostream>
 
@@ -27,7 +28,7 @@ ScavTrap::~ScavTrap()
 	std::cout << "ScavTrap destructor called : " << getName() << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(ScavTrap& other)
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
 	ClapTrap::operator=(other);
 	return *this;
@@ -35,12 +36,14 @@ ScavTrap& ScavTrap::operator=(ScavTrap& other)
 
 void ScavTrap::attack(const std::string& target)
 {
-	std::cout << "ScavTrap attacking... " << std::endl;
+	print_scavtrap_attack();
 	ClapTrap::attack(target);
 }
 
 
 void ScavTrap::guardGate()
 {
-	std::cout << getName() << " is now in Gatekeeper mode" << std::endl;
+	std::cout << getName();
+	print_scavtrap_guardGate();
+
 }

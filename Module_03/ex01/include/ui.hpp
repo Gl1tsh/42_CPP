@@ -20,6 +20,12 @@ void print_no_energy_point_for_attack(std::string name);
 void print_no_energy_point_for_heal(std::string name);
 void print_hitpoint_left(std::string name, unsigned int hitPoint);
 
+// scavtrap activity
+void print_scavtrap_attack();
+void print_scavtrap_guardGate();
+
+
+
 // dead
 void print_dead(std::string name);
 void print_dead_attack(std::string name);
