@@ -6,25 +6,23 @@
 
 int main()
 {
-	std::cout << "====== Constructor zone ======" << std::endl;
-	const Animal* meta = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
+	Animal* animals[10];
 
-	std::cout << std::endl << "====== Sound zone ======" << std::endl;
-	std::cout << std::endl << dog->getType() << " sound is : ";
-	dog->makeSound();
+	for (int i = 0; i < 5; i++)
+		animals[i] = new Dog;
 
-	std::cout << std::endl << cat->getType() << " sound is : ";
-	cat->makeSound(); //will output the cat sound!
+	for (int i = 5; i < 10; i++)
+		animals[i] = new Cat;
 
-	std::cout << std::endl << meta->getType() << " sound is : ";
-	meta->makeSound();
+	std::cout << std::endl;
 
-	std::cout << std::endl << "====== Destructor zone ======" << std::endl;
-	delete cat;
-	delete dog;
-	delete meta;
+	Cat copycat = static_cast<Cat&>(*animals[9]);
+
+	std::cout << std::endl;
+
+	for (int i = 0; i < 10; i++)
+		delete animals[i];
+
 
 	return 0;
 }

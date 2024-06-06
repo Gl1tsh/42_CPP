@@ -4,12 +4,13 @@
 Dog::Dog()
 {
 	type = "Dog";
-	brain = new Brain;
 	std::cout << "Dog : default constructor called" << std::endl;
+	brain = new Brain;
 }
 
 Dog::Dog(Dog& source) : Animal(source)
 {
+	brain = new Brain(*source.brain);
 	std::cout << "Dog : copy constructor called" << std::endl;
 }
 
