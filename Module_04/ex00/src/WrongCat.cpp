@@ -4,17 +4,17 @@
 WrongCat::WrongCat()
 {
 	type = "WrongCat";
-	std::cout << "WrongCat : default constructor called : " << std::endl;
+	std::cout << "WrongCat : default constructor called" << std::endl;
 }
 
 WrongCat::WrongCat(WrongCat& source) : WrongAnimal(source)
 {
-	std::cout << "WrongCat : copy constructor called : " << std::endl;
+	std::cout << "WrongCat : copy constructor called" << std::endl;
 }
 
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat : destructor called : " << std::endl;
+	std::cout << "WrongCat : destructor called" << std::endl;
 }
 
 WrongCat& WrongCat::operator=(WrongCat& source)

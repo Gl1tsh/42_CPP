@@ -4,18 +4,18 @@
 WrongAnimal::WrongAnimal()
 {
 	type = "random WrongAnimal";
-	std::cout << "WrongAnimal : default constructor called : " << std::endl;
+	std::cout << "WrongAnimal : default constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal& source)
 {
 	type = source.type;
-	std::cout << "WrongAnimal : copy constructor called : " << std::endl;
+	std::cout << "WrongAnimal : copy constructor called" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << "WrongAnimal : destructor called : " << std::endl;
+	std::cout << "WrongAnimal : destructor called" << std::endl;
 }
 
 WrongAnimal& WrongAnimal::operator=(WrongAnimal& source)

@@ -4,18 +4,18 @@
 Animal::Animal()
 {
 	type = "random animal";
-	std::cout << "Animal : default constructor called : " << std::endl;
+	std::cout << "Animal : default constructor called" << std::endl;
 }
 
 Animal::Animal(Animal& source)
 {
 	type = source.type;
-	std::cout << "Animal : copy constructor called : " << std::endl;
+	std::cout << "Animal : copy constructor called" << std::endl;
 }
 
 Animal::~Animal()
 {
-	std::cout << "Animal : destructor called : " << std::endl;
+	std::cout << "Animal : destructor called" << std::endl;
 }
 
 Animal& Animal::operator=(Animal& source)
