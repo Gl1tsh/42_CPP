@@ -1,14 +1,15 @@
 #include "ClapTrap.hpp"
+#include "ui.hpp"
 #include <iostream>
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "default constructor called : " << name << std::endl;
+	print_default_constructor(name);
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "overload constructor called : " << name << std::endl;
+	print_overload_constructor(name);
 	this->name = name;
 	this->hitPoint = 10;
 	this->energyPoint = 10;
@@ -18,7 +19,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(ClapTrap& other)
 {
-	std::cout << "copy constructor called : " << name << std::endl;
+	print_copy_constructor(name);
 	this->name = other.name;
 	this->hitPoint = other.hitPoint;
 	this->energyPoint = other.energyPoint;
@@ -28,12 +29,12 @@ ClapTrap::ClapTrap(ClapTrap& other)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "destructor called : " << name << std::endl;
+	print_destructor(name);
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-	std::cout << "operator called : " << name << std::endl;
+	print_operator(name);
 	this->name = other.name;
 	this->hitPoint = other.hitPoint;
 	this->energyPoint = other.energyPoint;
@@ -61,22 +62,22 @@ void ClapTrap::attack(const std::string& target)
 	if (alive() && energyPoint != 0)
 	{
 		energyPoint -= 1;
-		std::cout << name << " attack " << target;
-		std::cout << " | total energy point : " << energyPoint << std::endl;
+		print_attack(name, target);
+		print_total_energy_point(energyPoint);
 	}
 	else if (!alive())
-		std::cout << name << " is dead, cannot attack" << std::endl;
+		print_dead_attack(name);
 	else
-		std::cout << "not enough energy point : cannot attack" << std::endl;
+		print_no_energy_point_for_attack(name);
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << name << " being attack and take : " << amount << " damage" << std::endl;
+	print_take_damage(name, amount);
 	if (hitPoint <= amount)
 	{
 		hitPoint = 0;
-		std::cout << name << " he is dead" << std::endl;
+		print_dead(name);
 	}
 	else
 	{
@@ -91,15 +92,15 @@ void ClapTrap::beRepaired(unsigned int amount)
 		this->hitPoint += amount;
 		this->energyPoint -= 1;
 
-		std::cout << name << " heal : " << amount;
-		std::cout << "| total energy point : " << energyPoint << std::endl;
+		print_heal(name, amount);
+		print_total_energy_point(energyPoint);
 
 		if (hitPoint >= 10)
 			this->hitPoint = 10;
-		std::cout << name << " have now : " << hitPoint << " hitPoint" << std::endl;	
+		print_hitpoint_left(name, hitPoint);
 	}
 	else if (!alive())
-		std::cout << "the character is dead : cannot heal" << std::endl;
+		print_dead_attack(name);
 	else
-		std::cout << "not enough energy point : cannot heal" << std::endl;
+		print_dead_heal(name);
 }
