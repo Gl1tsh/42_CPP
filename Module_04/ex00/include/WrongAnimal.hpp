@@ -9,7 +9,7 @@ class WrongAnimal
 public:
 	WrongAnimal();
 	WrongAnimal(WrongAnimal& source);
-	virtual ~WrongAnimal();
+	~WrongAnimal();
 	WrongAnimal& operator=(WrongAnimal& source);
 
 	std::string getType() const;
