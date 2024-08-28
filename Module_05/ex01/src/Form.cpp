@@ -57,14 +57,13 @@ int Form::getGradeToExecute()
 void Form::beSigned(Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > grade_to_sign)
-		throw Form::GradeTooLowException();
+		throw GradeTooLowException();
 	is_signed = true;
 }
 
+// pour faire des std::cout avec des objets de type Form
 std::ostream& operator<<(std::ostream& output, Form& source)
 {
-	output << " the form named " << source.getName() << std::endl
-	<< "Grade to sign : " << source.getGradeToSign() << std::endl
-	<< "Grade to execute : " << source.getGradeToExecute() << std::endl;
+	output << "[the form named " << source.getName() << ", grade to sign : " << source.getGradeToSign() << ", grade to execute : " << source.getGradeToExecute() << "]";
 	return output;
 }

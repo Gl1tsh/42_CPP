@@ -61,11 +61,19 @@ int Bureaucrat::getGrade() const
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& source)
 {
-	output << source.getName() << ", bureaucrat grade " << source.getGrade() << ", ";
+	output << "[" << source.getName() << ", bureaucrat grade " << source.getGrade() << "]";
 	return output;
 }
 
 void Bureaucrat::signForm(Form& form)
 {
-	form.beSigned(*this);
+	try
+	{
+		form.beSigned(*this);
+		std::cout << *this << " signed "  << form << std::endl;
+	}
+	catch (Form::GradeTooLowException& exception)
+	{
+		std::cout << *this << " couldn’t sign "  << form << " because form Grade Too Low" << std::endl;
+	}
 }
