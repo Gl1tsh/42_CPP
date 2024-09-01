@@ -5,29 +5,14 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int grade_to_sign, int grade_to_execute)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
 {
-	// verifie si les grade peuvent signer
-	if (grade_to_sign < 145)
-		throw GradeTooHighException();
-	if (grade_to_sign > 145)
-		throw GradeTooLowException();
-	// verifie si les grade peuvent executer
-    if (grade_to_execute < 137)
-		throw GradeTooHighException();
-	if (grade_to_execute > 137)
-		throw GradeTooLowException();
-	// si tout est bon, on initialise les attributs
 	this->name = name;
-	this->grade_to_sign = grade_to_sign;
-	this->grade_to_execute = grade_to_execute;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& source)
 {
 	this->name = source.name;
-	this->grade_to_sign = source.grade_to_sign;
-	this->grade_to_execute = source.grade_to_execute;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -51,6 +36,11 @@ bool ShrubberyCreationForm::getSigned() const
 	return is_signed;
 }
 
+bool ShrubberyCreationForm::getExecuted() const
+{
+	return is_executed;
+}
+
 int ShrubberyCreationForm::getGradeToSign()
 {
 	return this->grade_to_sign;
@@ -63,11 +53,24 @@ int ShrubberyCreationForm::getGradeToExecute()
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& bureaucrat)
 {
+	// check si posssible de signer
 	if (bureaucrat.getGrade() > grade_to_sign)
 		throw GradeTooLowException();
 	if (bureaucrat.getGrade() < grade_to_sign)
 		throw GradeTooHighException();
+	// si tout est bon, on lui dit que c'est bon
 	is_signed = true;
+}
+
+void ShrubberyCreationForm::beExecuted(Bureaucrat& bureaucrat)
+{
+	// check si posssible d'executer
+	if (bureaucrat.getGrade() > grade_to_execute)
+		throw GradeTooLowException();
+	if (bureaucrat.getGrade() < grade_to_execute)
+		throw GradeTooHighException();
+	// si tout est bon, on lui dit que c'est bon
+	is_executed = true;
 }
 
 // pour faire des std::cout avec des objets de type Form
