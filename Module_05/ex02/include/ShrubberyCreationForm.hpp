@@ -20,27 +20,28 @@ public:
 	};
 
 	ShrubberyCreationForm();
-	ShrubberyCreationForm(std::string name);
+	ShrubberyCreationForm(std::string target);
 	ShrubberyCreationForm(ShrubberyCreationForm& source);
 	~ShrubberyCreationForm();
 	ShrubberyCreationForm& operator=(ShrubberyCreationForm& source);
 
-	std::string getName();
+	std::string getTarget();
 	bool getSigned() const;
 	bool getExecuted() const;
 	int getGradeToSign();
 	int getGradeToExecute();
 
+	void execute(Bureaucrat& executor);
+
 	void beSigned(Bureaucrat& bureaucrat);
 	void beExecuted(Bureaucrat& bureaucrat);
 
 private:
-	std::string name;
+	std::string target;
 	bool is_signed;
 	bool is_executed;
-	int grade_to_sign = 145;
-	int grade_to_execute = 137;
-
+	int grade_to_sign;
+	int grade_to_execute;
 };
 
 std::ostream& operator<<(std::ostream& output, ShrubberyCreationForm& source);

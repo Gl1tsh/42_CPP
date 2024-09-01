@@ -1,18 +1,19 @@
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
 {
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : grade_to_sign(145), grade_to_execute(137)
 {
-	this->name = name;
+	this->target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& source)
 {
-	this->name = source.name;
+	this->target = source.target;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -26,9 +27,9 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& s
 	return *this;
 }
 
-std::string ShrubberyCreationForm::getName()
+std::string ShrubberyCreationForm::getTarget()
 {
-	return this->name;
+	return this->target;
 }
 
 bool ShrubberyCreationForm::getSigned() const
@@ -49,6 +50,34 @@ int ShrubberyCreationForm::getGradeToSign()
 int ShrubberyCreationForm::getGradeToExecute()
 {
 	return this->grade_to_execute;
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat& executor)
+{
+	// Vérification si le formulaire est signé
+	if (!this->getSigned())
+		throw std::runtime_error("Form must be signed before it can be executed.");
+
+	// Vérification du grade de l'exécuteur
+	if (executor.getGrade() > this->getGradeToExecute())
+		throw GradeTooLowException();
+
+	// Création du fichier <target>_shrubbery
+	std::ofstream ofs(this->getTarget() + "_shrubbery");
+	if (!ofs.is_open())
+		throw std::runtime_error("File could not be opened.");
+
+	// Écriture de l'arbre en ASCII dans le fichier
+	ofs << "    *\n"
+		<< "   ***\n"
+		<< "  *****\n"
+		<< " *******\n"
+		<< "*********\n"
+		<< "   |||\n";
+	ofs.close();
+
+	// Indication que l'exécution a été réussie
+	std::cout << "ShrubberyCreationForm has been executed successfully by " << executor.getName() << "." << std::endl;
 }
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& bureaucrat)
