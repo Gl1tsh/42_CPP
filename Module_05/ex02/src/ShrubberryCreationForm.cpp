@@ -7,14 +7,17 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int grade_to_sign, int grade_to_execute)
 {
+	// verifie si les grade peuvent signer
 	if (grade_to_sign < 145)
 		throw GradeTooHighException();
 	if (grade_to_sign > 145)
 		throw GradeTooLowException();
+	// verifie si les grade peuvent executer
     if (grade_to_execute < 137)
 		throw GradeTooHighException();
 	if (grade_to_execute > 137)
 		throw GradeTooLowException();
+	// si tout est bon, on initialise les attributs
 	this->name = name;
 	this->grade_to_sign = grade_to_sign;
 	this->grade_to_execute = grade_to_execute;
