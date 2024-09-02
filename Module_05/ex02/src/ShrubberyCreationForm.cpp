@@ -29,8 +29,6 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& s
 
 void ShrubberyCreationForm::execute(Bureaucrat& executor) const
 {
-	std::cout << "ShrubberyCreationForm<" << this << ">::execute(): " << is_signed << std::endl;
-
 	// Vérification si le formulaire est signé
 	if (!this->getSigned())
 		throw NotSignedException();
