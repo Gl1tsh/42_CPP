@@ -1,118 +1,81 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <iostream>
 
-// CATASTROPHE : dois print OK si le formulaire est signer par un con trop bas level par rapport au formulaire
-void testBeSignedFormWhenBureaucratTooLow()
+// CATASTROPHE : Savoir si le bureaucrate peut exécuter un formulaire non signé
+void testBureaucratCantExecuteUnsignedForm()
 {
-	Bureaucrat sabushi("Sabushi", 15);
-	Form formulaire_1("Formulaire_1", 14, 16);
+	Bureaucrat sabushi("Sabushi", 150);
+	ShrubberyCreationForm formulaire_1("Home");
 	try
 	{
-		formulaire_1.beSigned(sabushi);
+		formulaire_1.execute(sabushi);
 
-		std::cout << "ERROR: " << sabushi << " signed the " << formulaire_1 << " he shouldn't be able" << std::endl;
+		std::cout << "ERROR: " << sabushi << " executed the " << formulaire_1 << " he shouldn't be able" << std::endl;
 	}
-	catch (Form::GradeTooHighException& exception)
+	catch (AForm::GradeTooLowException& exception)
 	{
-		std::cout << "ERROR: " << sabushi << " couldn't sign " << formulaire_1 << " because grade is too HIGH" << std::endl;
+		std::cout << "ERROR: " << sabushi << " couldn't execute " << formulaire_1 << " because grade is too low but it 150" << std::endl;
 	}
-	catch (Form::GradeTooLowException& exception)
+	catch (AForm::NotSignedException& exception)
 	{
-		std::cout << "OK: " << sabushi << " couldn't sign " << formulaire_1 << " because grade is too LOW" << std::endl;
+		std::cout << "OK: " << sabushi << " couldn't execute " << formulaire_1 << " because form not signed" << std::endl;
 	}
 }
 
-// dois fonctionner normalement, print OK si le formulaire est signer par un con qui a le level requis
-void testBeSignedFormWhenBureaucratOK()
+// CATASTROPHE : Savoir si le bureaucrate n'a pas le niveau pour executer le formulaire
+void testBureaucratCantExecuteGradeTooLow()
 {
-	Bureaucrat sabushi("Sabushi", 15);
-	Form formulaire_1("Formulaire_1", 15, 16);
+	Bureaucrat sabushi("Sabushi", 150);
+	Bureaucrat yoda("Yoda", 1);
+	ShrubberyCreationForm formulaire_1("Home");
+	formulaire_1.beSigned(yoda);
 	try
 	{
-		formulaire_1.beSigned(sabushi);
+		formulaire_1.execute(sabushi);
 
-		std::cout << "OK: " << sabushi << " signed the " << formulaire_1 << std::endl;
+		std::cout << "ERROR: " << sabushi << " executed the " << formulaire_1 << " he shouldn't be able" << std::endl;
 	}
-	catch (Form::GradeTooHighException& exception)
+	catch (AForm::GradeTooLowException& exception)
 	{
-		std::cout << "ERROR: " << sabushi << " couldn't sign " << formulaire_1 << " because grade is too HIGH" << std::endl;
+		std::cout << "OK: " << sabushi << " couldn't execute " << formulaire_1 << " because grade is too low" << std::endl;
 	}
-	catch (Form::GradeTooLowException& exception)
+	catch (AForm::NotSignedException& exception)
 	{
-		std::cout << "ERROR: " << sabushi << " couldn't sign " << formulaire_1 << " because grade is too LOW" << std::endl;
+		std::cout << "ERROR: " << sabushi << " couldn't execute " << formulaire_1 << " because form not signed but it is by Yoda" << std::endl;
 	}
 }
 
-// CATASTROPHE : le formulaire est out range (low) pour etre signer
-void testFormInvalidConstructTooLow()
-{
-	try
-	{
-		Bureaucrat sabushi("Sabushi", 150);
-		Form formulaire_1("Formulaire_1", 151, 16);
-
-		std::cout << "ERROR: " << formulaire_1 << " Constructed with 151 and did not throw exception." << std::endl;
-	}
-	catch (Form::GradeTooHighException& exception)
-	{
-		std::cout << "ERROR: Constructed with 151 and did throw invalid exception." << std::endl;
-	}
-	catch (Form::GradeTooLowException& exception)
-	{
-		std::cout << "OK: Constructed with 151 and did throw exception." << std::endl;
-	}
-}
-
-// CATASTROPHE : le formulaire est out range (high) pour etre signer
-void testFormInvalidConstructTooHigh()
-{
-	try
-	{
-		Bureaucrat sabushi("Sabushi", 150);
-		Form formulaire_1("Formulaire_1", -1, 16);
-
-		std::cout << "ERROR: " << formulaire_1 << " Constructed with -1 and did not throw exception." << std::endl;
-	}
-	catch (Form::GradeTooHighException& exception)
-	{
-		std::cout << "OK: Constructed with -1 and did throw invalid exception." << std::endl;
-	}
-	catch (Form::GradeTooLowException& exception)
-	{
-		std::cout << "ERROR: Constructed with -1 and did throw exception." << std::endl;
-	}
-}
-
-// OK : le formulaire est signer par un con qui a le level requis
-void testSignFormGoodMessage()
+// GOOD : Savoir si le formualire a bien été executé
+void testExecuteGoodMessage()
 {
 	Bureaucrat sabushi("Sabushi", 4);
-	Form formulaire_1("Formulaire_1", 20, 16);
+	ShrubberyCreationForm formulaire_1("Home");
 
 	sabushi.signForm(formulaire_1);
-	std::cout << "OK: signForm already printed some messages" << std::endl;
+	sabushi.executeForm(formulaire_1);
+	std::cout << "GOOD : OK: executeForm already printed some messages" << std::endl;
 }
 
-// OK : le formulaire est signer par un con qui a PAS le level requis
-void testSignFormBadMessage()
+// GOOD : Savoir si le formualire a bien été executé
+void testExecuteFormBadMessage()
 {
 	Bureaucrat sabushi("Sabushi", 34);
-	Form formulaire_1("Formulaire_1", 20, 16);
+	ShrubberyCreationForm formulaire_1("Home");
 
-	// ne dois pas planter, car signForm possede sont propre catch pour le message d'erreur
-	sabushi.signForm(formulaire_1);
-	std::cout << "OK: signForm already printed some messages" << std::endl;
+	// ne doit pas planter, car signForm possède son propre catch pour le message d'erreur
+	std::cout << "testExecuteFormBadMessage: " << formulaire_1.getSigned() << std::endl;
+	sabushi.executeForm(formulaire_1);
+	std::cout << "BAD : OK: executeForm already printed some messages" << std::endl;
 }
 
 int main()
 {
-	testBeSignedFormWhenBureaucratTooLow();
-	testBeSignedFormWhenBureaucratOK();
-	testFormInvalidConstructTooLow();
-	testFormInvalidConstructTooHigh();
-	testSignFormGoodMessage();
-	testSignFormBadMessage();
+	testBureaucratCantExecuteUnsignedForm();
+	testBureaucratCantExecuteGradeTooLow();
+
+	testExecuteGoodMessage();
+	testExecuteFormBadMessage();
 
 	return 0;
 }

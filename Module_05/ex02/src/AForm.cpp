@@ -5,13 +5,15 @@ AForm::AForm()
 
 }
 
-AForm::AForm(std::string name, int grade_to_sign, int grade_to_execute)
+AForm::AForm(std::string name, std::string target, int grade_to_sign, int grade_to_execute)
 {
 	if (grade_to_sign < 1)
 		throw GradeTooHighException();
 	if (grade_to_sign > 150)
 		throw GradeTooLowException();
 	this->name = name;
+	this->target = target;
+	this->is_signed = false;
 	this->grade_to_sign = grade_to_sign;
 	this->grade_to_execute = grade_to_execute;
 }
@@ -19,6 +21,7 @@ AForm::AForm(std::string name, int grade_to_sign, int grade_to_execute)
 AForm::AForm(AForm& source)
 {
 	this->name = source.name;
+	this->target = source.target;
 	this->grade_to_sign = source.grade_to_sign;
 	this->grade_to_execute = source.grade_to_execute;
 }

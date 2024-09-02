@@ -32,6 +32,7 @@ public:
 	int getGrade() const;
 
 	void signForm(AForm& form);
+	void executeForm(AForm& form);
 
 private:
 	std::string name;
