@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include <iostream>
 
 // CATASTROPHE : Savoir si le bureaucrate peut exécuter un formulaire non signé
@@ -69,6 +70,18 @@ void testExecuteFormBadMessage()
 	std::cout << "BAD : OK: executeForm already printed some messages" << std::endl;
 }
 
+void testExecuteRobotOK()
+{
+	Bureaucrat sabushi("Sabushi", 4);
+	RobotomyRequestForm formulaire_1("Home");
+
+	sabushi.signForm(formulaire_1);
+	for (int i = 0; i < 10; i++)
+		sabushi.executeForm(formulaire_1);
+
+}
+
+
 int main()
 {
 	testBureaucratCantExecuteUnsignedForm();
@@ -76,6 +89,8 @@ int main()
 
 	testExecuteGoodMessage();
 	testExecuteFormBadMessage();
+
+	testExecuteRobotOK();
 
 	return 0;
 }
