@@ -1,6 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iostream>
 
 // CATASTROPHE : Savoir si le bureaucrate peut exécuter un formulaire non signé
@@ -81,6 +82,16 @@ void testExecuteRobotOK()
 
 }
 
+void testExecutePresidentialOK()
+{
+	Bureaucrat sabushi("Sabushi", 4);
+	PresidentialPardonForm formulaire_1("Home");
+
+	sabushi.signForm(formulaire_1);
+	sabushi.executeForm(formulaire_1);
+
+}
+
 
 int main()
 {
@@ -91,6 +102,7 @@ int main()
 	testExecuteFormBadMessage();
 
 	testExecuteRobotOK();
+	testExecutePresidentialOK();
 
 	return 0;
 }
