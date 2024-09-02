@@ -29,8 +29,6 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& source)
 
 void RobotomyRequestForm::execute(Bureaucrat& executor) const
 {
-	std::cout << "RobotomyRequestForm<" << this << ">::execute(): " << is_signed << std::endl;
-
 	// Vérification si le formulaire est signé
 	if (!this->getSigned())
 		throw NotSignedException();
@@ -40,7 +38,7 @@ void RobotomyRequestForm::execute(Bureaucrat& executor) const
 		throw GradeTooLowException();
 
 	if (std::rand() % 2)
-		std::cout << target << " has been robotomized successfully" << std::endl;
+		std::cout << "RRrrrrrrRRrrrr" << target << " has been robotomized successfully" << std::endl;
 	else
-		std::cout << target << " robotomization failed" << std::endl;	
+		std::cout << "RRrrrrrrRRrrrr" << target << " robotomization failed" << std::endl;	
 }
