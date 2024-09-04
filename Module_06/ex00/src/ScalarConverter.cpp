@@ -26,74 +26,40 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter& source)
 	return *this;
 }
 
-void ScalarConverter::convert(const std::string& what)
+void ScalarConverter::convert(const std::string& input)
 {
-	// === Check si c'est un char et character imprimable
-	if (what.length() == 1 && isprint(what[0]))
-		std::cout << "char: " << what[0] << std::endl;
+	// ============= Check si c'est un char et character imprimable
+	if (input.length() == 1 && isprint(input[0]) && !isdigit(input[0]))
+		std::cout << "char: " << input[0] << std::endl;
 	else
 		std::cout << "char: error: not a character" << std::endl;
 
 
-	// === Check si c'est un int
-	try
-	{
-		int value = std::stoi(what);
-		std::cout << "int: " << value << std::endl;
-	}
-	catch (const std::invalid_argument&)
-	{
-        // Si la conversion échoue parce que la chaîne ne représente pas un nombre
-		std::cout << "int: error: not a number" << std::endl;
-	}
-	catch (const std::out_of_range&)
-	{
-        // Si la conversion échoue parce que le nombre est trop grand pour être stocké dans un int
-		std::cout << "int: error: out of range" << std::endl;
-	}
+	// ============= Check si c'est un int (strol)
+	char *end;
+	errno = 0;
+	long intValue = std::strtol(input.c_str(), &end, 10);
 
+	if (*end == '\0' && errno == 0)
+		std::cout << "int: " << intValue << std::endl;
+	else
+		std::cout << "int: error: not a int" << std::endl;
 
+	// ============= Check si c'est un float
+	errno = 0;
+	float floatValue = std::strtof(input.c_str(), &end);
 
-	// === Check si c'est un float
-	try
-	{
-		float value = std::stof(what);
-		if (std::isinf(value))
-			std::cout << "float: error: infinity (out of range)" << std::endl;
-		else if (std::isnan(value))
-			std::cout << "float: error: not a number" << std::endl;
-		else
-			std::cout << "float: " << value << std::endl;
-	}
-	catch (const std::out_of_range&)
-	{
-		// Si le nombre est bien trop grand niveau taille
-		std::cout << "float: error: out of range" << std::endl;
-	}
-	catch (const std::invalid_argument&)
-	{
-        // Si la conversion échoue parce que la chaîne ne représente pas un nombre
-		std::cout << "float: error: not a number" << std::endl;
-	}
+	if (*end == '\0' && errno == 0)
+		std::cout << "float: " << floatValue << "f" << std::endl;
+	else
+		std::cout << "float: error: not a float" << std::endl;
 
-	// === Check si c'est un double 
-	try
-	{
-		double value = std::stod(what);
-		if (std::isinf(value))
-			std::cout << "double: error: infinity (out of range)" << std::endl;
-		else if (std::isnan(value))
-			std::cout << "double: error: not a number" << std::endl;
-		else
-			std::cout << "double: " << value << std::endl;
-	}
-	catch (const std::out_of_range&)
-	{
-		std::cout << "double: error: out of range" << std::endl;
-	}
-	catch (const std::invalid_argument&)
-	{
-        // Si la conversion échoue parce que la chaîne ne représente pas un nombre
-		std::cout << "double: error: not a number" << std::endl;
-	}
+	// ============= Check si c'est un double 
+	errno = 0;
+	double doubleValue = std::strtod(input.c_str(), &end);
+
+	if (*end == '\0' && errno == 0)
+		std::cout << "double: " << doubleValue << std::endl;
+	else
+		std::cout << "double: error: not a double" << std::endl;
 }

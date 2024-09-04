@@ -7,14 +7,14 @@ class ScalarConverter
 {
 
 public:
+	static void convert(const std::string& what);
+
+private:
 	ScalarConverter();
 	ScalarConverter(ScalarConverter& source);
 	~ScalarConverter();
 	ScalarConverter& operator=(ScalarConverter& source);
 
-	static void convert(const std::string& what);
-
-private:
 	std::string string_source;
 
 };
