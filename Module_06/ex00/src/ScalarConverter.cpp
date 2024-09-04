@@ -28,6 +28,22 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter& source)
 
 void ScalarConverter::convert(const std::string& input)
 {
+	if (input == "+inf" || input == "-inf" || input == "nan")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "float: " << input << "f" << std::endl;
+		std::cout << "double: " << input << std::endl;
+		return;
+	}
+
+	if (input == "-inff" || input == "+inff" || input == "nanf")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "float: " << input.substr(0, input.length() - 1) << "f" << std::endl;
+		std::cout << "double: " << input.substr(0, input.length() - 1) << std::endl;
+		return;
+	}
+
 	// ============= Check si c'est un char et character imprimable
 	if (input.length() == 1 && isprint(input[0]) && !isdigit(input[0]))
 		std::cout << "char: " << input[0] << std::endl;
