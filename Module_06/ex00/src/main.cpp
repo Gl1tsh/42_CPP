@@ -21,7 +21,6 @@ int main()
 	std::cout << "\033[32m" << "TEST CASE FOR SPECIAL" << "\033[0m" <<  std::endl;
 	std::cout << "Test avec '+inf':" << std::endl;
 	ScalarConverter::convert("+inf");
-	std::cout << std::endl;
 
 	std::cout << "\nTest avec '-inf':" << std::endl;
 	ScalarConverter::convert("-inf");
