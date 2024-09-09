@@ -52,7 +52,7 @@ int main()
 
 	std::cout << "=================== template string test ==================" << std::endl;
 	std::cout << "attribution de valeurs des string c et d" << std::endl;
-	std::string c = "string 1";
+	std::string c = "string 10";
 	std::string d = "string 10";
 
 	std::cout << "string 1 : " << c << std::endl;
