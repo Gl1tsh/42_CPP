@@ -1,26 +1,15 @@
 #include "Form.hpp"
 
-Form::Form()
-{
-
-}
-
-Form::Form(std::string name, int grade_to_sign, int grade_to_execute)
+Form::Form(const std::string name, const int grade_to_sign, const int grade_to_execute) : name(name), grade_to_sign(grade_to_sign), grade_to_execute(grade_to_execute)
 {
 	if (grade_to_sign < 1)
 		throw GradeTooHighException();
 	if (grade_to_sign > 150)
 		throw GradeTooLowException();
-	this->name = name;
-	this->grade_to_sign = grade_to_sign;
-	this->grade_to_execute = grade_to_execute;
 }
 
-Form::Form(Form& source)
+Form::Form(Form& source) : name(source.name), grade_to_sign(source.grade_to_sign), grade_to_execute(source.grade_to_execute)
 {
-	this->name = source.name;
-	this->grade_to_sign = source.grade_to_sign;
-	this->grade_to_execute = source.grade_to_execute;
 }
 
 Form::~Form()

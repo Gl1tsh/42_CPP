@@ -20,7 +20,7 @@ public:
 	};
 
 	Form();
-	Form(std::string name, int grade_to_sign, int grade_to_execute);
+	Form(const std::string name, const int grade_to_sign, const int grade_to_execute);
 	Form(Form& source);
 	~Form();
 	Form& operator=(Form& source);
@@ -33,10 +33,10 @@ public:
 	void beSigned(Bureaucrat& bureaucrat);
 
 private:
-	std::string name;
+	const std::string name;
 	bool is_signed;
-	int grade_to_sign;
-	int grade_to_execute;
+	const int grade_to_sign;
+	const int grade_to_execute;
 
 };
 
