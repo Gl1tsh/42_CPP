@@ -5,7 +5,7 @@ Bureaucrat::Bureaucrat() : name("Alain"), grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
