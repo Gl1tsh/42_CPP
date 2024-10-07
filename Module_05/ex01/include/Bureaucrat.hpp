@@ -34,7 +34,7 @@ public:
 	void signForm(Form& form);
 
 private:
-	std::string name;
+	const std::string name;
 	int grade;
 
 };
