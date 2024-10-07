@@ -24,7 +24,7 @@ public:
 	};
 
 	AForm();
-	AForm(std::string name, std::string target, int grade_to_sign, int grade_to_execute);
+	AForm(const std::string name, std::string target, int grade_to_sign, int grade_to_execute);
 	AForm(AForm& source);
 	virtual ~AForm() = 0;
 	AForm& operator=(AForm& source);
@@ -38,7 +38,7 @@ public:
 	virtual void execute(Bureaucrat& executor) const = 0;
 
 protected:
-	std::string name;
+	const std::string name;
 	std::string target;
 	bool is_signed;
 	int grade_to_sign;

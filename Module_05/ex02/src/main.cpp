@@ -77,7 +77,7 @@ void testExecuteRobotOK()
 	RobotomyRequestForm formulaire_1("Home");
 
 	sabushi.signForm(formulaire_1);
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 3; i++)
 		sabushi.executeForm(formulaire_1);
 
 }
