@@ -20,7 +20,7 @@ public:
 	};
 
 	Bureaucrat();
-	Bureaucrat(std::string name, int grade);
+	Bureaucrat(const std::string name, int grade);
 	Bureaucrat(Bureaucrat& source);
 	Bureaucrat& operator=(Bureaucrat& source);
 	~Bureaucrat();
@@ -35,7 +35,7 @@ public:
 	void executeForm(AForm& form);
 
 private:
-	std::string name;
+	const std::string name;
 	int grade;
 
 };
