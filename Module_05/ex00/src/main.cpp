@@ -128,8 +128,8 @@ int main()
 		Bureaucrat perso("salut", 20);
 		Bureaucrat le_connard_de_la_compta;
 
-		std::cout << le_connard_de_la_compta.getName() << std::endl;
-
+		std::cout << "le_connard_de_la_compta : " << le_connard_de_la_compta.getName() << std::endl;
+		
 		Bureaucrat perso_chiant("salut", 0);
 	}
 	catch (std::exception& e)

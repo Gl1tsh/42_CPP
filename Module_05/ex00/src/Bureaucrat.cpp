@@ -1,31 +1,24 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : name("Alain"), grade(150)
 {
-	this->name = "Alain";
-	this->grade = 150;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
-	this->name = name;
-	this->grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& source)
+Bureaucrat::Bureaucrat(Bureaucrat& source) : name(source.name), grade(source.grade)
 {
-	this->name = source.name;
-	this->grade = source.grade;	
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat& source)
 {
-	this->name = source.name;
 	this->grade = source.grade;	
 	return *this;
 }
@@ -59,6 +52,7 @@ int Bureaucrat::getGrade() const
 	return this->grade;
 }
 
+// pour faire des cout ou cerr directement avec un objet Bureaucrat
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& source)
 {
 	output << source.getName() << ", bureaucrat grade " << source.getGrade();

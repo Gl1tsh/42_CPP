@@ -29,7 +29,7 @@ public:
 	int getGrade() const;
 
 private:
-	std::string name;
+	const std::string name;
 	int grade;
 
 };
