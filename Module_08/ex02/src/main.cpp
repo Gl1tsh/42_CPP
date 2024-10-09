@@ -28,7 +28,16 @@ int main()
 	std::cout << "the top element was popped " << std::endl;
 	std::cout << "the top element is " << mstack.top() << std::endl;
 	std::cout << "the size of the stack is " << mstack.size() << std::endl;
-	mstack.push(3); mstack.push(5); mstack.push(737); //[...] mstack.push(0);
 
-	return 0;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737); //[...] mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite) {
+		std::cout << *it << std::endl;
+	++it; }
+	std::stack<int> s(mstack); return 0;
 }
