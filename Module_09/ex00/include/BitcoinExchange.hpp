@@ -1,8 +1,9 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <map>
+#include <vector>
 #include <string>
+#include <utility>
 
 class BitcoinExchange
 {
@@ -18,7 +19,8 @@ public:
 
 
 private:
-	std::map<std::string, double> exahangeRates;
+	// cree un vecteur de pair de string et double
+	std::vector<std::pair<std::string, double> > exchangeRates;
 
 
 };

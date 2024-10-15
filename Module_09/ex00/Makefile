@@ -1,7 +1,7 @@
 NAME = btc
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -I./include -std=c++98
+FLAGS = -Wall -Wextra -Werror -I./include -std=c++98 -g
 
 OBJDIR = obj/
 SRCDIR = src/

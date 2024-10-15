@@ -60,7 +60,7 @@ bool isValideDate(std::string date)
 	return mktime(&timeinfo) != -1;
 }
 
-void parseRate(std::string filename)
+void parseRate(std::string filename, BitcoinExchange& bitcoin_exchange)
 {
 	// Ouvre le fichier passer en paramètre
 	std::fstream file(filename, std::ios::in);
@@ -71,8 +71,6 @@ void parseRate(std::string filename)
 
 	// On crée une variable pour stocker chaque ligne du fichier
 	std::string line;
-	// On crée une objet de la classe BitcoinExchange
-	BitcoinExchange* bitcoin_exchange = new BitcoinExchange();
 
 	// On skip la premiere ligne du fichier
 	std::getline(file, line);
@@ -96,11 +94,11 @@ void parseRate(std::string filename)
 		double rate = parseDouble(line.substr(commaPosition + 1));
 
 		// ajoute le taux a la date
-		bitcoin_exchange->addRateForDate(date, rate);
+		bitcoin_exchange.addRateForDate(date, rate);
 	}
 }
 
-void processInput(std::string filename)
+void processInput(std::string filename, BitcoinExchange& bitcoin_exchange)
 {
 	// Ouvre le fichier passer en paramètre
 	std::fstream file(filename, std::ios::in);
@@ -111,8 +109,6 @@ void processInput(std::string filename)
 
 	// On crée une variable pour stocker chaque ligne du fichier
 	std::string line;
-	// On crée une objet de la classe BitcoinExchange
-	BitcoinExchange* bitcoin_exchange = new BitcoinExchange();
 
 	// On parcours chaque ligne du fichier
 	while (std::getline(file, line))
@@ -135,7 +131,7 @@ void processInput(std::string filename)
 			double amount = parseDouble(line.substr(commaPosition + 1));
 
 			// ajoute le taux a la date
-			std::cout << date << " => " << amount << " = " << bitcoin_exchange->findRateAtDate(date) * amount << std::endl;
+			std::cout << date << " => " << amount << " = " << bitcoin_exchange.findRateAtDate(date) * amount << std::endl;
 		}
 		catch (const std::exception &e)
 		{
@@ -152,10 +148,15 @@ int main(int argc, char **argv)
 		std::cerr << "Usage: " << argv[0] << " <input file> [<csv file>]" << std::endl;
 		return 1;
 	}
+
 	try
 	{
-		parseRate(argv[2]);
-		processInput(argv[1]);
+		// On affiche 10 chiffre significatif
+		std::cout.precision(10);
+
+		BitcoinExchange bitcoin_exchange;
+		parseRate(argv[2], bitcoin_exchange);
+		processInput(argv[1], bitcoin_exchange);
 	}
 	catch (const std::exception &e)
 	{
