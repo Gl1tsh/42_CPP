@@ -10,8 +10,6 @@ class BitcoinExchange
 public:
 	BitcoinExchange();
 	~BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange &source);
-	BitcoinExchange &operator=(const BitcoinExchange &source);
 
 	void addRateForDate(std::string date, double rate);
 	double findRateAtDate(std::string date);
@@ -19,6 +17,8 @@ public:
 
 
 private:
+	BitcoinExchange(const BitcoinExchange &source);
+	BitcoinExchange &operator=(const BitcoinExchange &source);
 	// cree un vecteur de pair de string et double
 	std::vector<std::pair<std::string, double> > exchangeRates;
 
