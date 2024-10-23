@@ -5,21 +5,22 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Usage: " << argv[0] << " <expression>" << std::endl;
+		std::cerr << "Usage: " << argv[0] << "<expression>" << std::endl;
 		return 1;
 	}
 
 	std::string expression = argv[1];
 	RPN rpn;
 	
-	for (std::string::iterator it = expression.end(); it != expression.begin(); --it)
+	for (std::string::reverse_iterator it = expression.rbegin(); it != expression.rend(); ++it)
 	{
 		if (*it == ' ')
 			continue;
 		if (*it >= '0' && *it <= '9')
-			rpn.addNumber(*it);
+			// std::string(&*it, 1) c'est pour convertir un char en string
+			rpn.addNumber(std::string(&*it, 1));
 		else if (*it == '+' || *it == '-' || *it == '*' || *it == '/')
-			rpn.addOperator(*it);
+			rpn.addOperator(std::string(&*it, 1));
 		else
 		{
 			std::cerr << "Invalid character: " << *it << std::endl;

@@ -8,7 +8,9 @@ class RPN
 public:
 	RPN();
 	~RPN();
-
+	void addNumber(std::string number);
+	void addOperator(std::string operation);
+	int calculate();
 
 private:
 	RPN(const RPN& source);
