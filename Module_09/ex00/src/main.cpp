@@ -11,6 +11,7 @@ double parseDouble(const std::string& input)
 	errno = 0;
 	double doubleValue = std::strtod(input.c_str(), &end);
 
+	// si end est different de input.c_str() et que end est un caractère nul et que errno est 0, c'est good
 	if (end != input.c_str() && *end == '\0' && errno == 0)
 		return doubleValue;
 	throw std::invalid_argument("double: error: impossible");
@@ -25,12 +26,14 @@ int parseInt(const std::string& input)
 
 	if (*end == '\0' && errno == 0)
 	{
+		// On verifie si la valeur est dans les limites d'un int (min et max)
 		if (intValue >= std::numeric_limits<int>::min() && intValue <= std::numeric_limits<int>::max())
 			return intValue;
 	}
 	throw std::invalid_argument("int: error: impossible");
 }
 
+// Fonction qui permet de verifier si une date est valide
 bool isValideDate(std::string date)
 {
 	// On crée une structure tm pour stocker la date
@@ -60,6 +63,7 @@ bool isValideDate(std::string date)
 	return mktime(&timeinfo) != -1;
 }
 
+// fonction qui permet de parser le fichier csv et de stocker les taux dans la classe BitcoinExchange
 void parseRate(std::string filename, BitcoinExchange& bitcoin_exchange)
 {
 	// Ouvre le fichier passer en paramètre
@@ -98,6 +102,7 @@ void parseRate(std::string filename, BitcoinExchange& bitcoin_exchange)
 	}
 }
 
+// fonction qui permet de parser le fichier d'input (celui que läon cree manuelement) et de calculer le montant en euro
 void processInput(std::string filename, BitcoinExchange& bitcoin_exchange)
 {
 	// Ouvre le fichier passer en paramètre
@@ -143,6 +148,17 @@ void processInput(std::string filename, BitcoinExchange& bitcoin_exchange)
 
 int main(int argc, char **argv)
 {
+	// Verifier si le nombre de paramètre est bon
+	// si le nombre de paramètre est different de 2 ou 3, on affiche un message d'erreur
+	// On affiche 10 chiffre significatif en tout
+	// On crée une variable pour stocker le nom du fichier csv
+	// Si le nombre de paramètre est égale a 3, on stocke le nom du fichier csv dans la variable
+	// sinon on garde le nom par défaut
+	// On crée une instance de BitcoinExchange
+	// On parse le fichier csv
+	// On parse le fichier d'input
+	// Si une exception est lancée, on affiche le message d'erreur et on retourne 1
+
 	if (argc < 2 || argc > 3)
 	{
 		std::cerr << "Usage: " << argv[0] << " <input file> [<csv file>]" << std::endl;
@@ -151,11 +167,15 @@ int main(int argc, char **argv)
 
 	try
 	{
-		// On affiche 10 chiffre significatif
+		// On affiche 10 chiffre significatif en tout
 		std::cout.precision(10);
+		std::string csv_filename = "data.csv";
 
+		// Check si le fichier csv est passer en paramètre, sinon on garde le nom par défaut (qui est le fichier data.csv)
+		if (argc == 3)
+			csv_filename = argv[2];
 		BitcoinExchange bitcoin_exchange;
-		parseRate(argv[2], bitcoin_exchange);
+		parseRate(csv_filename, bitcoin_exchange);
 		processInput(argv[1], bitcoin_exchange);
 	}
 	catch (const std::exception &e)

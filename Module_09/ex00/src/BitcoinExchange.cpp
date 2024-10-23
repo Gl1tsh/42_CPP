@@ -20,12 +20,14 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &)
 	return *this;
 }
 
+// fonction qui permet d'ajouter un taux a une date donnée
 void BitcoinExchange::addRateForDate(std::string date, double rate)
 {
 	// On ajoute le taux a la date et on ajoute la pair date et rate au vecteur
 	exchangeRates.push_back(std::make_pair(date, rate));
 }
 
+// fonction qui permet de trouver le taux a une date donnée
 double BitcoinExchange::findRateAtDate(std::string date)
 {
 	// On parcours chaque ligne du fichier
