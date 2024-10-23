@@ -11,26 +11,10 @@ int main(int argc, char **argv)
 
 	std::string expression = argv[1];
 	RPN rpn;
-	
-	for (std::string::reverse_iterator it = expression.rbegin(); it != expression.rend(); ++it)
-	{
-		if (*it == ' ')
-			continue;
-		if (*it >= '0' && *it <= '9')
-			// std::string(&*it, 1) c'est pour convertir un char en string
-			rpn.addNumber(std::string(&*it, 1));
-		else if (*it == '+' || *it == '-' || *it == '*' || *it == '/')
-			rpn.addOperator(std::string(&*it, 1));
-		else
-		{
-			std::cerr << "Invalid character: " << *it << std::endl;
-			return 1;
-		}
-	}
 
 	try
 	{
-		int result = rpn.calculate();
+		int result = rpn.calculate(argv[1]);
 		std::cout << "Result: " << result << std::endl;
 	}
 	catch (std::exception& e)

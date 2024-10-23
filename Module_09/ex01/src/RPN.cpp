@@ -49,54 +49,53 @@ int convertInt(const std::string& input)
 	throw std::invalid_argument("int: error: impossible");
 }
 
-void RPN::addNumber(std::string number)
-{
-	std::cout << "Adding number: " << number << std::endl;
-	stack.push(number);
-}
-
-void RPN::addOperator(std::string operation)
-{
-	std::cout << "Adding operator: " << operation << std::endl;
-	stack.push(operation);
-}
-
-int RPN::calculate()
+int RPN::calculate(std::string expression)
 {
 	std::cout << "Calculating..." << std::endl;
+
+	std::stack<int> stack;
 	int first;
 	int second;
-	std::string operation;
 	int result;
 
-	// check si la stack peux continuer de calculer (1 correspond au resultat final)
-	while (stack.size() != 1)
+	for (std::string::iterator it = expression.begin(); it != expression.end(); ++it)
 	{
-		// On recupere les 2 premiers elements de la stack
-		first = convertInt(stack.top());
-		stack.pop();
-		second = convertInt(stack.top());
-		stack.pop();
-		// On recupere l'operation
-		operation = stack.top();
-		stack.pop();
+		if (*it == ' ')
+			continue;
+		// On verifie si le caractere est un chiffre
+		if (*it >= '0' && *it <= '9')
+			stack.push(convertInt(std::string(&*it, 1)));
+		else if (*it == '+' || *it == '-' || *it == '*' || *it == '/')
+		{
+			// On verifie si on a assez d'operandes
+			if (stack.size() < 2)
+				throw std::runtime_error("Not enough operands");
+			// On recupere les deux derniers operandes
+			second = stack.top();
+			stack.pop();
+			first = stack.top();
+			stack.pop();
 
-		// On effectue l'operation
-		if (operation == "+")
-			result = first + second;
-		else if (operation == "-")
-			result = first - second;
-		else if (operation == "*")
-			result = first * second;
-		else if (operation == "/")
-			result = first / second;
+			// On effectue l'operation
+			if (*it == '+')
+				result = first + second;
+			else if (*it == '-')
+				result = first - second;
+			else if (*it == '*')
+				result = first * second;
+			else if (*it == '/')
+				result = first / second;
+			else
+				throw std::runtime_error("Invalid operator: ");
+			// On empile le resultat
+			stack.push(result);
+			std::cout << "Result: " << first << *it << second << " = " << result << std::endl;
+		}
 		else
-			throw std::runtime_error("Invalid operator: " + operation);
-
-		// On ajoute le resultat de l'operation a la stack
-		stack.push(intToString(result));
-		std::cout << "result of : " << first << operation << second << " = " << result << std::endl;
+			throw std::runtime_error("Invalid character");
 	}
-
-	return convertInt(stack.top());
+	// On verifie si on a trop d'operandes, et pas d'operateurs
+	if (stack.size() != 1)
+		throw std::runtime_error("Not enough operators");
+	return stack.top();
 }

@@ -8,16 +8,11 @@ class RPN
 public:
 	RPN();
 	~RPN();
-	void addNumber(std::string number);
-	void addOperator(std::string operation);
-	int calculate();
+	int calculate(std::string expression);
 
 private:
 	RPN(const RPN& source);
 	RPN& operator=(const RPN& source);
-
-	// creation d'un stack
-	std::stack<std::string> stack;
 
 };
 
