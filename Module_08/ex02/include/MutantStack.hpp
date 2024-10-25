@@ -10,16 +10,22 @@ class MutantStack : public std::stack<T, Container>
 {
 public:
 	// tout les constructeur de stack, sont pas de 98)
-	MutantStack();
-	~MutantStack();
-	MutantStack(const MutantStack<T, Container> &source);
+	MutantStack() {};
+	~MutantStack() {};
+	MutantStack(const MutantStack<T, Container> &source) { *this = source; };
 	// l'operateur d'affection existe aussi dans stack
-	MutantStack<T, Container>& operator=(const MutantStack<T, Container> &source);
+	MutantStack<T, Container>& operator=(const MutantStack<T, Container> &source)
+	{
+		std::stack<T, Container>::operator=(source);
+		return *this;
+	};
 
 	typedef typename Container::iterator iterator;
 
-	iterator begin();
-	iterator end();
+	// on a pas besoin de redéfinir les méthodes de stack, on a juste besoin de redéfinir les méthodes de container
+	// le c est un attribut de stack qui est le container, vu que c'est un attribut protected, on peut y accéder (heritage de stack)
+	iterator begin() { return this->c.begin(); };
+	iterator end() { return this->c.end(); };
 
 private:
 
