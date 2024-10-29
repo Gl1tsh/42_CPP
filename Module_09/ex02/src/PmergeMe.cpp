@@ -46,13 +46,13 @@ void PmergeMe::processList(std::list<int>& numbers)
 	numbers = mergeLists(leftPart, rightPart);
 }
 
-void PmergeMe::splitList(const std::list<int>& numbers, std::list<int>& leftPart, std::list<int>& rightPart)
+void PmergeMe::splitList(std::list<int>& numbers, std::list<int>& leftPart, std::list<int>& rightPart)
 {
 	int size = numbers.size();
 	int middle = size / 2;
 
 	// Itérateur pour parcourir `numbers`
-	std::list<int>::const_iterator it = numbers.begin();
+	std::list<int>::iterator it = numbers.begin();
 
 	// Remplir `leftPart` avec la première moitié
 	for (int i = 0; i < middle; i++)
@@ -70,13 +70,13 @@ void PmergeMe::splitList(const std::list<int>& numbers, std::list<int>& leftPart
 }
 
 // Fusionne deux listes triées en une seule liste triée
-std::list<int> PmergeMe::mergeLists(const std::list<int>& leftPart, const std::list<int>& rightPart)
+std::list<int> PmergeMe::mergeLists(std::list<int>& leftPart, std::list<int>& rightPart)
 {
 	// Liste fusionnée
 	std::list<int> merged;
 
-	std::list<int>::const_iterator leftIt = leftPart.begin();
-	std::list<int>::const_iterator rightIt = rightPart.begin();
+	std::list<int>::iterator leftIt = leftPart.begin();
+	std::list<int>::iterator rightIt = rightPart.begin();
 
 	// Fusion des deux listes triées
 	while (leftIt != leftPart.end() && rightIt != rightPart.end())
