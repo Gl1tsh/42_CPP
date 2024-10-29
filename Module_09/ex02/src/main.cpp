@@ -3,7 +3,8 @@
 #include <list>
 #include <cstdlib> // pour std::atoi
 
-int main(int argc, char* argv[]) {
+int main(int argc, char **argv)
+{
 	// Création de la classe de tri
 	PmergeMe sorter;
 
