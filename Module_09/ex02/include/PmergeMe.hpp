@@ -18,6 +18,7 @@ private:
 	std::list<int> numbers;
 	std::list<std::pair<int, int> > pairs;
 
+
 	void splitList(const std::list<int>& numbers, std::list<int>& leftPart, std::list<int>& rightPart);
 	std::list<int> mergeLists(const std::list<int>& leftPart, const std::list<int>& rightPart);
 

@@ -28,23 +28,45 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& source)
 
 // fonctions de gestion des nombres ============================================
 
+void PmergeMe::processList(std::list<int>& numbers)
+{
+	// Si la liste est vide ou ne contient qu'un seul élément, rien à faire
+	if (numbers.size() <= 1)
+		return;
 
-// Split la liste en deux parties, gauche et droite, a gauche les elements de 0 a middle-1, a droite les elements de middle a size-1
-void PmergeMe::splitList(const std::list<int>& numbers, std::list<int>& leftPart, std::list<int>& rightPart) {
+	// Diviser la liste en deux parties
+	std::list<int> leftPart, rightPart;
+	splitList(numbers, leftPart, rightPart);
 
-	int middle = numbers.size() / 2;
+	// Appliquer récursivement `processList` sur chaque partie
+	processList(leftPart);
+	processList(rightPart);
+
+	// Fusionner les deux parties triées
+	numbers = mergeLists(leftPart, rightPart);
+}
+
+void PmergeMe::splitList(const std::list<int>& numbers, std::list<int>& leftPart, std::list<int>& rightPart)
+{
+	int size = numbers.size();
+	int middle = size / 2;
+
+	// Itérateur pour parcourir `numbers`
 	std::list<int>::const_iterator it = numbers.begin();
 
-	// Remplir `leftPart` avec la première moitié de `numbers`
+	// Remplir `leftPart` avec la première moitié
 	for (int i = 0; i < middle; i++)
 	{
 		leftPart.push_back(*it);
 		it++;
 	}
 
-	// Remplir `rightPart` avec la seconde moitié de `numbers`
-	for (; it != numbers.end(); it++)
+	// Remplir `rightPart` avec la deuxième moitié
+	for (int i = middle; i < size; i++)
+	{
 		rightPart.push_back(*it);
+		it++;
+	}
 }
 
 // Fusionne deux listes triées en une seule liste triée
@@ -86,22 +108,4 @@ std::list<int> PmergeMe::mergeLists(const std::list<int>& leftPart, const std::l
 	}
 
 	return merged;
-}
-
-void PmergeMe::processList(std::list<int>& numbers)
-{
-	// Si la liste est vide ou ne contient qu'un seul élément, rien à faire
-	if (numbers.size() <= 1)
-		return;
-
-	// Diviser la liste en deux parties
-	std::list<int> leftPart, rightPart;
-	splitList(numbers, leftPart, rightPart);
-
-	// Appliquer récursivement `processList` sur chaque partie
-	processList(leftPart);
-	processList(rightPart);
-
-	// Fusionner les deux parties triées
-	numbers = mergeLists(leftPart, rightPart);
 }
