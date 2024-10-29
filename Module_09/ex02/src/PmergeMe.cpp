@@ -28,67 +28,80 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& source)
 
 // fonctions de gestion des nombres ============================================
 
-void PmergeMe::setNumbers(const std::list<int>& nums)
-{
-    numbers = nums;
-}
 
-void PmergeMe::splitArray()
-{
-	// nettoyer les listes avant de commencer
-	pairs.clear();
+// Split la liste en deux parties, gauche et droite, a gauche les elements de 0 a middle-1, a droite les elements de middle a size-1
+void PmergeMe::splitList(const std::list<int>& numbers, std::list<int>& leftPart, std::list<int>& rightPart) {
 
-	std::list<int>::iterator it = numbers.begin();
+	int middle = numbers.size() / 2;
+	std::list<int>::const_iterator it = numbers.begin();
 
-	// boucle sur les nombres pour les diviser en paires, si le nombre d'éléments est impair, on ajoute -1 à la fin
-	while (std::distance(it, numbers.end()) > 1)
+	// Remplir `leftPart` avec la première moitié de `numbers`
+	for (int i = 0; i < middle; i++)
 	{
-		// on prend les deux premiers éléments de la liste
-		int first = *it;
-		++it;
-		int second = *it;
-		++it;
-
-		// on les ajoute à la liste des paires
-		pairs.push_back(std::make_pair(first, second));
-	}
-	if (it != numbers.end())
-		pairs.push_back(std::make_pair(*it, -1));
-}
-
-void PmergeMe::sortArray()
-{
-	for(std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
-	{
-		// -1 signifie qu'il n'y a pas de deuxième élément
-		if (it->second != -1 && it->first > it->second)
-			std::swap(it->first, it->second);
+		leftPart.push_back(*it);
+		it++;
 	}
 
-	pairs.sort();
+	// Remplir `rightPart` avec la seconde moitié de `numbers`
+	for (; it != numbers.end(); it++)
+		rightPart.push_back(*it);
 }
 
-void PmergeMe::mergeArray()
+// Fusionne deux listes triées en une seule liste triée
+std::list<int> PmergeMe::mergeLists(const std::list<int>& leftPart, const std::list<int>& rightPart)
 {
-	numbers.clear();
+	// Liste fusionnée
+	std::list<int> merged;
 
-	// boucle sur les paires pour les ajouter à la liste des nombres
-	for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
+	std::list<int>::const_iterator leftIt = leftPart.begin();
+	std::list<int>::const_iterator rightIt = rightPart.begin();
+
+	// Fusion des deux listes triées
+	while (leftIt != leftPart.end() && rightIt != rightPart.end())
 	{
-		// on ajoute le premier élément de la paire
-		numbers.push_back(it->first);
-		// si le deuxième élément est différent de -1, on l'ajoute aussi, -1 signifie qu'il n'y a pas de deuxième élément
-		if (it->second != -1)
-			numbers.push_back(it->second);
+		if (*leftIt < *rightIt)
+		{
+			merged.push_back(*leftIt);
+			leftIt++;
+		}
+		else
+		{
+			merged.push_back(*rightIt);
+			rightIt++;
+		}
 	}
+
+	// Ajouter les éléments restants de `leftPart`
+	while (leftIt != leftPart.end())
+	{
+		merged.push_back(*leftIt);
+		leftIt++;
+	}
+
+	// Ajouter les éléments restants de `rightPart`
+	while (rightIt != rightPart.end())
+	{
+		merged.push_back(*rightIt);
+		rightIt++;
+	}
+
+	return merged;
 }
 
-void PmergeMe::printArray()
+void PmergeMe::processList(std::list<int>& numbers)
 {
-	// affichage des nombres
-	for (std::list<int>::iterator it = numbers.begin(); it != numbers.end(); ++it)
-		std::cout << *it << " ";
+	// Si la liste est vide ou ne contient qu'un seul élément, rien à faire
+	if (numbers.size() <= 1)
+		return;
 
-	std::cout << std::endl;
+	// Diviser la liste en deux parties
+	std::list<int> leftPart, rightPart;
+	splitList(numbers, leftPart, rightPart);
 
+	// Appliquer récursivement `processList` sur chaque partie
+	processList(leftPart);
+	processList(rightPart);
+
+	// Fusionner les deux parties triées
+	numbers = mergeLists(leftPart, rightPart);
 }

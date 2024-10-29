@@ -1,36 +1,37 @@
 #include "PmergeMe.hpp"
 #include <iostream>
+#include <list>
 #include <cstdlib> // pour std::atoi
 
 int main(int argc, char* argv[]) {
-    // Vérifier si des arguments sont fournis
-    if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <number1> <number2> ... <numberN>" << std::endl;
-        return 1;
-    }
+	// Création de la classe de tri
+	PmergeMe sorter;
 
-    // Initialiser la liste des nombres
-    std::list<int> numbers;
-    for (int i = 1; i < argc; ++i) {
-        numbers.push_back(std::atoi(argv[i])); // Conversion de chaque argument en entier
-    }
+	// Liste de nombres non triés
+	std::list<int> numbers;
 
-    // Créer un objet PmergeMe et y insérer les nombres
-    PmergeMe sorter;
-    sorter.setNumbers(numbers); // On utilise une méthode setNumbers pour initialiser `numbers` dans l'objet
+	// Parcourir les arguments de la ligne de commande pour les ajouter à la liste
+	for (int i = 1; i < argc; ++i)
+	{
+		int num = std::atoi(argv[i]);
+		numbers.push_back(num);
+	}
 
-    // Affichage avant le tri
-    std::cout << "Before: ";
-    sorter.printArray();
+	// Affichage de la liste avant le tri
+	std::cout << "Before sorting: ";
+	for (std::list<int>::iterator it = numbers.begin(); it != numbers.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
 
-    // Appeler les méthodes de tri
-    sorter.splitArray();  // Divise en paires
-    sorter.sortArray();   // Trie chaque paire et la liste globalement
-    sorter.mergeArray();  // Fusionne les paires triées
+	// Appel de la fonction pour trier la liste
+	sorter.processList(numbers);
 
-    // Affichage après le tri
-    std::cout << "After: ";
-    sorter.printArray();
+	// Affichage de la liste après le tri
+	std::cout << "After sorting: ";
+	for (std::list<int>::iterator it = numbers.begin(); it != numbers.end(); ++it)
+		std::cout << *it << " ";
 
-    return 0;
+	std::cout << std::endl;
+
+	return 0;
 }
