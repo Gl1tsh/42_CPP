@@ -1,7 +1,7 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <vector>
+#include <map>
 #include <string>
 #include <utility>
 
@@ -20,7 +20,7 @@ private:
 	BitcoinExchange(const BitcoinExchange &source);
 	BitcoinExchange &operator=(const BitcoinExchange &source);
 	// cree un vecteur de pair de string et double
-	std::vector<std::pair<std::string, double> > exchangeRates;
+	std::map<std::string, double> exchangeRates;
 
 
 };
