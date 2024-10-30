@@ -11,17 +11,12 @@ PmergeMe::~PmergeMe()
 {
 }
 
-PmergeMe::PmergeMe(const PmergeMe& source) : numbers(source.numbers), pairs(source.pairs)
+PmergeMe::PmergeMe(const PmergeMe& )
 {
 }
 
-PmergeMe& PmergeMe::operator=(const PmergeMe& source)
+PmergeMe& PmergeMe::operator=(const PmergeMe& )
 {
-	if (this == &source)
-	{
-		numbers = source.numbers;
-		pairs = source.pairs;
-	}
 	return *this;
 }
 
