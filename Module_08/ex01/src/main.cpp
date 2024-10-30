@@ -5,19 +5,13 @@ int main()
 {
 	try
 	{
-		Span sp = Span(100);
-		sp.addNumber(-2);
-		sp.addNumber(0);
-		sp.addNumber(-1);
-		sp.addNumber(4);
+		Span sp = Span(5);
+		sp.addNumber(6);
 		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
 
-		sp.addNumber(21);
-		sp.addNumber(24);
-		sp.addNumber(20);
-
-		sp.addNumber(30);
-		sp.addNumber(1);
 
 		std::cout << "Shortest : " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest : " << sp.longestSpan() << std::endl;

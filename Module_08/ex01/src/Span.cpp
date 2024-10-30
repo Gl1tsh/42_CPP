@@ -32,61 +32,41 @@ void Span::addNumber(int number)
 {
 	if (numbers.size() == numberLimit)
 		throw std::exception();
-	numbers.push_back(number);	
+	numbers.push_back(number);
 }
 
 int Span::shortestSpan()
 {
-	int beforeNumber;
-	int minOccurence = std::numeric_limits<int>::max();
-	int occurence = 1;
-
 	if (numbers.size() < 2)
-		throw std::exception();
+		throw std::runtime_error("Not enough numbers to find a span.");
 
-	std::sort(numbers.begin(), numbers.end(), Span::compareNumbers);
-	for (std::vector<int>::iterator it = numbers.begin(); it != numbers.end(); it++)
+	// trie de la liste dans l'ordre croissant
+	std::sort(numbers.begin(), numbers.end());
+
+	// on initialise la valeur minimale à la plus grande valeur possible
+	int minSpan = std::numeric_limits<int>::max();
+
+	// on parcourt la liste pour trouver la différence minimale entre deux nombres
+	for (size_t i = 1; i < numbers.size(); ++i)
 	{
-		if (it == numbers.begin())
-			beforeNumber = *it;
-		
-		if (*it == beforeNumber + 1)
-			occurence++;
-		else
-		{
-			minOccurence = occurence < minOccurence ? occurence : minOccurence;
-			occurence = 1;
-		}
-		beforeNumber = *it;
+		int span = numbers[i] - numbers[i - 1];
+		if (span < minSpan)
+			// si la différence est plus petite que la précédente, on la remplace
+			minSpan = span;
 	}
-	return minOccurence;
+	return minSpan;
 }
+
 
 int Span::longestSpan()
 {
-	int beforeNumber;
-	int maxOccurence = 0;
-	int occurence = 1;
-
 	if (numbers.size() < 2)
-		throw std::exception();
+		throw std::runtime_error("Not enough numbers to find a span.");
 
-	std::sort(numbers.begin(), numbers.end(), Span::compareNumbers);
-	for (std::vector<int>::iterator it = numbers.begin(); it != numbers.end(); it++)
-	{
-		if (it == numbers.begin())
-			beforeNumber = *it;
-		
-		if (*it == beforeNumber + 1)
-			occurence++;
-		else
-		{
-			maxOccurence = occurence > maxOccurence ? occurence : maxOccurence;
-			occurence = 1;
-		}
-		beforeNumber = *it;
-	}
-	return maxOccurence;
+	int minNumber = *std::min_element(numbers.begin(), numbers.end());
+	int maxNumber = *std::max_element(numbers.begin(), numbers.end());
+
+	return maxNumber - minNumber;
 }
 
 bool Span::compareNumbers(int a, int b)
