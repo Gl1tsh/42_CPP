@@ -1,7 +1,7 @@
 NAME = PmergeMe
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -I./include -std=c++98 -g
+FLAGS = -Wall -Wextra -Werror -I./include -std=c++98
 
 OBJDIR = obj/
 SRCDIR = src/
