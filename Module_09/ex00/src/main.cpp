@@ -39,6 +39,15 @@ bool isValideDate(std::string date)
 	// On crée une structure tm pour stocker la date
 	struct tm timeinfo;
 
+	// On extrait l'année, le mois et le jour de la date, - tm.h veux le - 1900 (delta entre maintenant et 1900)
+	int originalYear = parseInt(date.substr(0, 4));
+
+	// On extrait le mois de la date, - 1 car le mois commence a 0
+	int originalMonth = parseInt(date.substr(5, 2));
+
+	// On extrait le jour de la date
+	int originalDay = parseInt(date.substr(8, 2));
+
 	// membre pas utilisé
 	timeinfo.tm_gmtoff = 0;
 	timeinfo.tm_zone = 0;
@@ -48,19 +57,15 @@ bool isValideDate(std::string date)
 	timeinfo.tm_hour = 0;
 	timeinfo.tm_min = 0;
 	timeinfo.tm_sec = 0;
-
-	// On extrait l'année, le mois et le jour de la date, - tm.h veux le - 1900 (delta entre maintenant et 1900)
-	timeinfo.tm_year = parseInt(date.substr(0, 4)) - 1900;
-
-	// On extrait le mois de la date, - 1 car le mois commence a 0
-	timeinfo.tm_mon = parseInt(date.substr(5, 2)) - 1;
-
-	// On extrait le jour de la date
-	timeinfo.tm_mday = parseInt(date.substr(8, 2));
+	timeinfo.tm_year = originalYear - 1900;
+	timeinfo.tm_mon = originalMonth - 1;
+	timeinfo.tm_mday = originalDay;
 
 	// On verifie si la date est valide
 	// Si la date est invalide, on retourne false
-	return mktime(&timeinfo) != -1;
+	time_t timestamp = mktime(&timeinfo);
+	// mktime retourne -1 si la date est invalide, compare la date original (parser) avec la date convertie
+	return timestamp != -1 && timeinfo.tm_year + 1900 == originalYear && timeinfo.tm_mon + 1 == originalMonth && timeinfo.tm_mday == originalDay;
 }
 
 // fonction qui permet de parser le fichier csv et de stocker les taux dans la classe BitcoinExchange
@@ -134,6 +139,8 @@ void processInput(std::string filename, BitcoinExchange& bitcoin_exchange)
 			
 			// extrait le monatant de la line
 			double amount = parseDouble(line.substr(commaPosition + 1));
+			if (amount < 0 || amount > 1000)
+				throw std::invalid_argument("amount: error: impossible");
 
 			// ajoute le taux a la date
 			std::cout << date << " => " << amount << " = " << bitcoin_exchange.findRateAtDate(date) * amount << std::endl;
