@@ -37,18 +37,15 @@ int main(int argc, char **argv)
 	sorter.processList(numbers);
 	clock_t end = clock();
 
-	// convertis unite de temps en secondes
-	// CLOCK_PER_SEC est une constante qui represente le nombre de ticks par seconde (depend de l'OS et de machine)
-	std::cout << "Time: " << (double)(end - start) / CLOCKS_PER_SEC * 1000000 << " us" << std::endl;
-
 	// Affichage de la liste après le tri
 	std::cout << "After sorting: ";
 	for (std::list<int>::iterator it = numbers.begin(); it != numbers.end(); ++it)
 		std::cout << *it << " ";
-
 	std::cout << std::endl;
 
-
+	// convertis unite de temps en secondes
+	// CLOCK_PER_SEC est une constante qui represente le nombre de ticks par seconde (depend de l'OS et de machine)
+	std::cout << "Time: " << (double)(end - start) / CLOCKS_PER_SEC * 1000000 << " us" << std::endl;
 
 	return 0;
 }
