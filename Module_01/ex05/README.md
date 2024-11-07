@@ -1,27 +1,27 @@
-# Exercice 05 : Harl 2.0
+# Exercise 05: Harl 2.0
 
-## Résumé
-Créez une classe `Harl` avec quatre fonctions privées : `debug`, `info`, `warning`, `error`, et une fonction publique `void complain(std::string level)`. La fonction publique appelle l'une des fonctions privées selon le niveau passé en paramètre. Utilisez des pointeurs sur fonctions membres pour éviter les structures `if/else`.
+## Summary
+Create a `Harl` class with four private member functions: `debug`, `info`, `warning`, and `error`. Add a public function `void complain(std::string level)` that calls the appropriate private function based on the passed `level`. Use pointers to member functions to avoid `if/else` structures.
 
-## Fichiers à rendre
+## Files to Submit
 - `Makefile`
 - `main.cpp`
 - `Harl.{h, hpp}`
 - `Harl.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
 ```bash
 make
 ```
 
-### Exécution
+### Execution
 ```bash
 ./harl2.0
 ```
 
-### Sortie (exemple)
+### Sample Output
 ```bash
 [ DEBUG ]
 I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!
