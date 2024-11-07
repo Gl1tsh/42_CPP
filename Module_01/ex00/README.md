@@ -1,14 +1,15 @@
-# Exercice 01 : Moar brainz!
+# Exercice 00 : BraiiiiiiinnnzzzZ
 
 ## Résumé
-Cet exercice consiste à implémenter une fonction `zombieHorde()` qui crée et retourne un tableau de `N` zombies, tous initialisés avec le même nom. Le but est de manipuler l'allocation dynamique de mémoire et de gérer correctement la libération de celle-ci.
+Cet exercice consiste à implémenter une classe `Zombie` avec un attribut privé `name` et une fonction membre `announce()` qui permet au zombie d'annoncer son nom. Vous devrez également implémenter deux fonctions supplémentaires : `newZombie()` et `randomChump()`, pour créer des zombies sur le tas ou la pile respectivement. L'objectif est de comprendre quand utiliser l'allocation dynamique de mémoire (tas) par rapport à l'allocation automatique (pile).
 
 ## Fichiers à rendre
 - `Makefile`
 - `main.cpp`
 - `Zombie.{h, hpp}`
 - `Zombie.cpp`
-- `zombieHorde.cpp`
+- `newZombie.cpp`
+- `randomChump.cpp`
 
 ## Compilation et exécution
 
@@ -17,18 +18,15 @@ Pour compiler le programme, exécutez la commande suivante :
 ```bash
 make
 ```
----
 
-### Exemples d'utilisation
-Exemple 1 : Création d'une horde de zombies
+---
+### Exécution
+Pour exécuter le programme, utilisez la commande suivante :
 ```bash
-./zombieHorde
+./braiiiiiiinnnzzzZ
 ```
 
-Sortie (exemple) :
+Sortie :
 ```bash
-Zombie 1: BraiiiiiiinnnzzzZ...
-Zombie 2: BraiiiiiiinnnzzzZ...
-Zombie 3: BraiiiiiiinnnzzzZ...
-...
+ZombieFoo: BraiiiiiiinnnzzzZ...
 ```
