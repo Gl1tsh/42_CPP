@@ -1,34 +1,34 @@
-# Exercice 01 : Premiers pas vers une classe utile
+# Exercise 01: First Steps Towards a Useful Class
 
-## Résumé
-Ajoutez des constructeurs supplémentaires et des fonctions à votre classe Fixed pour permettre la conversion entre entiers, flottants et valeurs en virgule fixe. Vous devez implémenter :
+## Summary
+Add additional constructors and functions to your `Fixed` class to enable conversions between integers, floats, and fixed-point values. You need to implement:
 
-### Membres publics supplémentaires
-- Constructeur prenant un entier constant.
-- Constructeur prenant un flottant constant.
-- `float toFloat(void) const` : convertit la valeur en flottant.
-- `int toInt(void) const` : convertit la valeur en entier.
-- Surcharge de l'opérateur `<<` pour afficher la valeur en flottant.
+### Additional Public Members
+- Constructor taking a constant integer.
+- Constructor taking a constant float.
+- `float toFloat(void) const`: converts the value to a float.
+- `int toInt(void) const`: converts the value to an integer.
+- Overload of the `<<` operator to output the value as a float.
 
-## Fichiers à rendre
+## Files to Submit
 - `Makefile`
 - `main.cpp`
 - `Fixed.{h, hpp}`
 - `Fixed.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
 ```bash
 make
 ```
 
-### Exécution
+### Execution
 ```bash
-./classeUtile
+./usefulClass
 ```
 
-### Sortie (exemple)
+### Sample Output
 ```bash
 Default constructor called
 Int constructor called
