@@ -1,9 +1,13 @@
-# Exercice 03 : Unnecessary violence
+# Exercise 03: Unnecessary Violence
 
-## Résumé
-Cet exercice consiste à implémenter une classe `Weapon` et deux classes `HumanA` et `HumanB`. La classe `Weapon` doit avoir un attribut privé `type` et des méthodes pour obtenir et modifier ce type. `HumanA` doit recevoir l'arme dans son constructeur et l'utiliser pour attaquer, tandis que `HumanB` peut être sans arme initialement et la recevoir plus tard.
+## Summary
+Implement a `Weapon` class with a private `type` attribute and member functions to get and set the type. Create `HumanA` and `HumanB` classes, both having a `Weapon` and a `name`. Both should have a member function `attack()` that displays:
+```bash
+<name> attacks with their <weapon type>
+```
+`HumanA` should receive the `Weapon` in its constructor, while `HumanB` should be able to receive a `Weapon` after instantiation.
 
-## Fichiers à rendre
+## Files to Submit
 - `Makefile`
 - `main.cpp`
 - `Weapon.{h, hpp}`
@@ -13,19 +17,19 @@ Cet exercice consiste à implémenter une classe `Weapon` et deux classes `Human
 - `HumanB.{h, hpp}`
 - `HumanB.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
 ```bash
 make
 ```
 
-### Exécution
+### Execution
 ```bash
 ./unnecessaryViolence
 ```
 
-### Sortie (exemple)
+### Sample Output
 ```bash
 Bob attacks with their crude spiked club
 Bob attacks with their some other type of club
