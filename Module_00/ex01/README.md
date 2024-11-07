@@ -1,81 +1,51 @@
-# Exercice 01 : My Awesome PhoneBook
+# Exercise 01: My Awesome PhoneBook
 
-## Résumé
-Cet exercice consiste à créer un programme qui simule un répertoire téléphonique limité à 8 contacts. Le programme doit inclure les commandes `ADD`, `SEARCH`, et `EXIT`.
+## Summary
+Create a program that behaves like a basic phone book from the 80s. Implement two classes:
 
-- **`ADD`** : Permet à l'utilisateur d'ajouter un contact avec des champs tels que le prénom, le nom de famille, le surnom, le numéro de téléphone et le secret le plus sombre.
-- **`SEARCH`** : Affiche les contacts sous forme de tableau et permet de rechercher un contact par index.
-- **`EXIT`** : Quitte le programme et efface les contacts en mémoire.
+### Classes to Implement
+- `PhoneBook`:
+  - Represents the phone book.
+  - Contains an array of contacts.
+  - Can hold up to 8 contacts; if a 9th contact is added, replace the oldest one.
+  - Dynamic memory allocation is forbidden.
 
-## Fichiers à rendre
+- `Contact`:
+  - Represents an individual contact in the phone book.
+
+The phone book object should be an instance of the `PhoneBook` class, and contacts should be instances of the `Contact` class. Ensure frequently used elements are private and publicly accessible when needed.
+
+### Program Behavior
+- **ADD**: Prompts the user to fill in contact details one field at a time. The fields include first name, last name, nickname, phone number, and darkest secret. Fields cannot be left empty.
+- **SEARCH**: Displays the list of contacts in a table with columns for index, first name, last name, and nickname. Each column should be 10 characters wide and right-aligned. Truncate text that exceeds the width and replace the last character with a period ('.'). Prompts the user for an index to display contact details. Handle invalid input gracefully.
+- **EXIT**: Quits the program, and all contacts are lost.
+- Ignore any other input.
+
+## Files to Submit
 - `Makefile`
 - `*.cpp`
-- `*.h` ou `*.hpp`
+- `*.[h, hpp]`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
-Pour compiler le programme, exécutez la commande suivante :
 ```bash
 make
 ```
 
----
 ### Execution
 ```bash
 ./phonebook
 ```
 
----
-### Exemples d'utilisation
-Exemple 1 : Ajouter un contact
-Lancez le programme et entrez la commande ADD :
+### Sample Output
 ```bash
-./phonebook
-```
-
-Entrée utilisateur :
-```bash
-ADD
+|     Index|First Name| Last Name|  Nickname|
+|         1|     John |      Doe |   Johnny |
+Enter index to view details: 1
 First name: John
 Last name: Doe
 Nickname: Johnny
 Phone number: 123456789
 Darkest secret: Afraid of heights
-```
-
----
-Exemple 2 : Rechercher un contact
-Après avoir ajouté des contacts, entrez la commande SEARCH :
-```bash
-./phonebook
-```
-
-Entrée utilisateur :
-```bash
-SEARCH
-```
-
-Sortie (exemple de format de tableau) :
-```bash
-|  Index   |First Name| Last Name| Nickname |
-|     1    |     John |      Doe |   Johnny |
-|     2    |    Alice |  Johnson |    Ally  |
-```
-
----
-Exemple 2 : Rechercher un contact
-Pour quitter le programme, entrez la commande EXIT :
-```bash
-./phonebook
-```
-
-Entrée utilisateur :
-```bash
-EXIT
-```
-
-Sortie
-```bash
-Goodbye!
 ```
