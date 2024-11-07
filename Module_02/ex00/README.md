@@ -1,35 +1,35 @@
-# Exercice 00 : Mon premier canon
+# Exercise 00: My First Canonical Class
 
-## Résumé
-Dans cet exercice, vous devez créer une classe sous forme canonique pour représenter un nombre en virgule fixe. La classe doit inclure un entier pour stocker la valeur et un entier constant statique pour la partie fractionnaire initialisée à 8 bits. 
+## Summary
+In this exercise, you need to create a canonical class to represent a fixed-point number. The class should include an integer to store the value and a static constant integer for the fractional bits initialized to 8.
 
-### Membres publics à implémenter
-- Constructeur par défaut initialisant la valeur à 0.
-- Constructeur de recopie.
-- Surcharge de l'opérateur d'affectation.
-- Destructeur.
-- `int getRawBits(void) const` : retourne la valeur brute.
-- `void setRawBits(int const raw)` : initialise la valeur avec celle passée en paramètre.
+### Public Members to Implement
+- Default constructor initializing the value to 0.
+- Copy constructor.
+- Assignment operator overload.
+- Destructor.
+- `int getRawBits(void) const`: returns the raw value.
+- `void setRawBits(int const raw)`: sets the value with the given parameter.
 
-## Fichiers à rendre
+## Files to Submit
 - `Makefile`
 - `main.cpp`
 - `Fixed.{h, hpp}`
 - `Fixed.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
 ```bash
 make
 ```
 
-### Exécution
+### Execution
 ```bash
-./monPremierCanon
+./myFirstCanonical
 ```
 
-### Sortie (exemple)
+### Sample Output
 ```bash
 Default constructor called
 Copy constructor called
