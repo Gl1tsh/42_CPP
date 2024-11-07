@@ -1,56 +1,36 @@
-# Exercice 00 : Mégaphone
+# Exercise 00: Megaphone
 
-## Résumé
-Cet exercice consiste à créer un programme nommé `megaphone` qui prend des arguments passés en ligne de commande et les affiche en majuscules. Si aucun argument n'est fourni, le programme affiche un message spécifique pour simuler un bruit fort et insupportable.
+## Summary
+Write a program that behaves as follows to ensure everyone is awake:
+```bash
+$> ./megaphone "shhhhh... I think the students are asleep..."
+SHHHHH... I THINK THE STUDENTS ARE ASLEEP...
+$> ./megaphone Damnit "!" "Sorry students, I thought this thing was off."
+DAMNIT ! SORRY STUDENTS, I THOUGHT THIS THING WAS OFF.
+$> ./megaphone
+* LOUD AND UNBEARABLE FEEDBACK NOISE *
+$>
+```
+Implement this exercise in a C++ way.
 
-## Fichiers à rendre
+## Files to Submit
 - `Makefile`
 - `megaphone.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
-Pour compiler le programme, exécutez la commande suivante :
 ```bash
 make
 ```
----
+
 ### Execution
 ```bash
-./megaphone "votre texte ici"
+./megaphone <arguments>
 ```
 
-### Exemple 1 :
-Avec un argument
+### Sample Output
 ```bash
-./megaphone "Hello World!"
+Input: ./megaphone "hello world"
+Output: HELLO WORLD
 ```
-
-Sortie
-```bash
-HELLO WORLD!
-```
----
-### Exemple 2 :
-Avec plusieurs arguments
-```bash
-./megaphone "42 is the answer" "to life"
-```
-
-Sortie
-```bash
-42 IS THE ANSWER TO LIFE
-```
----
-### Exemple 3 :
-Sans arguments
-```bash
-./megaphone
-```
-
-Sortie
-```bash
-* LOUD AND UNBEARABLE FEEDBACK NOISE *
-```
-
-
