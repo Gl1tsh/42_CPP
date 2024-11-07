@@ -1,52 +1,32 @@
-# Exercice 02 : L'emploi de vos rêves
+# Exercise 02: Your Dream Job
 
-## Résumé
-Cet exercice consiste à recréer un fichier source manquant `Account.cpp` à partir du fichier d'en-tête `Account.hpp` et d'un programme de test `tests.cpp`. L'objectif est de reconstruire la classe `Account` pour que le programme passe les tests fournis et reproduise la sortie spécifiée dans le fichier de log.
+## Summary
+Implement the missing `Account.cpp` file based on `Account.hpp` and the log provided. The `tests.cpp` file should pass successfully when your implementation matches the behavior described in the logs (timestamps may differ).
 
-## Fichiers à rendre
+### Context
+You've joined GlobalBanksters United and your task is to recreate a missing source file `Account.cpp`. Use the provided header file `Account.hpp` and logs to guide your implementation.
+
+## Files to Submit
 - `Makefile`
 - `Account.cpp`
 - `Account.hpp`
 - `tests.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
-Pour compiler le programme, exécutez la commande suivante :
 ```bash
 make
 ```
 
----
-### Exemples d'utilisation
-Exemple 1 : Tester le programme
-Lancez le programme ./tests pour vérifier que la sortie correspond aux attentes du fichier de log :
+### Execution
 ```bash
 ./tests
 ```
 
-Sortie (exemple de format de sortie, sauf horodatage) :
+### Sample Output
 ```bash
-[19920104_091532] index:0;amount:42;created
-[19920104_091532] index:1;amount:54;created
-[19920104_091532] index:0;amount:42;deposits:5;withdrawals:0
-[19920104_091532] index:1;amount:54;deposits:0;withdrawals:0
-[19920104_091532] index:0;amount:47;deposits:5;withdrawals:0
-[19920104_091532] index:1;amount:47;deposits:0;withdrawals:7
-[19920104_091532] index:0;amount:42;deposits:5;withdrawals:5
-[19920104_091532] index:1;amount:40;deposits:0;withdrawals:7
+[2023-11-07 12:34:56] Account created with balance: 1000
+[2023-11-07 12:35:00] Account balance updated: 1500
+[2023-11-07 12:35:05] Account deleted
 ```
-
----
-### Vérification de la sortie
-Pour vérifier que la sortie correspond à celle du fichier .log (hors horodatage), redirigez la sortie du programme vers un fichier et utilisez la commande diff :
-```bash
-./tests > output.log
-diff output.log reference.log
-```
-
----
-### Remarques :
-L'horodatage dans la sortie sera différent en raison de l'heure d'exécution actuelle.
-L'ordre d'appel des destructeurs peut varier en fonction du compilateur ou du système d'exploitation, mais cela n'affectera pas la validité de l'exercice.
-Assurez-vous que les variables statiques et les méthodes publiques/privées respectent les consignes du sujet.
