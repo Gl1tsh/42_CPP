@@ -1,40 +1,37 @@
-# Exercice 02 : HI THIS IS BRAIN
+# Exercise 02: HI THIS IS BRAIN
 
-## Résumé
-Cet exercice consiste à créer un programme qui utilise des pointeurs et des références pour manipuler des chaînes de caractères. Vous devrez initialiser une variable `string` avec "HI THIS IS BRAIN", créer un pointeur `stringPTR` pointant vers cette variable et une référence `stringREF` la référant. L'objectif est de démontrer la manipulation et l'affichage des adresses et des valeurs pour bien comprendre la relation entre les variables, les pointeurs, et les références en C++.
+## Summary
+Create a program that initializes a `string` variable with "HI THIS IS BRAIN", a pointer `stringPTR` to that variable, and a reference `stringREF`. The program should print:
+- The memory address of the `string` variable.
+- The memory address held by `stringPTR`.
+- The memory address held by `stringREF`.
+- The value of the `string` variable.
+- The value pointed to by `stringPTR`.
+- The value referenced by `stringREF`.
 
-## Fichiers à rendre
+## Files to Submit
 - `Makefile`
 - `main.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
-Pour compiler le programme, exécutez la commande suivante :
 ```bash
 make
 ```
 
----
-### Exécution
-Pour lancer le programme, utilisez la commande suivante :
+### Execution
 ```bash
 ./hiThisIsBrain
 ```
 
-Sortie (exemple) :
+### Sample Output
 ```bash
-Adresse de la variable string: 0x7ffee7b3c690
-Adresse contenue dans stringPTR: 0x7ffee7b3c690
-Adresse contenue dans stringREF: 0x7ffee7b3c690
+Address of the string variable: 0x7ffee7b3c690
+Address held by stringPTR: 0x7ffee7b3c690
+Address held by stringREF: 0x7ffee7b3c690
 
-Valeur de la variable string: HI THIS IS BRAIN
-Valeur pointée par stringPTR: HI THIS IS BRAIN
-Valeur référencée par stringREF: HI THIS IS BRAIN
+Value of the string variable: HI THIS IS BRAIN
+Value pointed by stringPTR: HI THIS IS BRAIN
+Value referenced by stringREF: HI THIS IS BRAIN
 ```
-
----
-Remarques :
-Cet exercice vise à démystifier l'utilisation des références et des pointeurs en C++.
-Vérifiez que les adresses affichées par string, stringPTR et stringREF sont identiques pour confirmer qu'ils pointent tous vers la même zone mémoire.
-Il n'y a pas de fonctions interdites, donc vous pouvez utiliser les fonctionnalités de base de la bibliothèque standard si nécessaire.
