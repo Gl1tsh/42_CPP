@@ -1,31 +1,31 @@
-# Exercice 04 : Sed is for losers
+# Exercise 04: Sed is for Losers
 
-## Résumé
-Cet exercice consiste à créer un programme qui prend trois paramètres : un nom de fichier, une chaîne `s1` et une chaîne `s2`. Le programme doit copier le contenu du fichier dans un nouveau fichier nommé `<filename>.replace`, en remplaçant chaque occurrence de `s1` par `s2`. L'utilisation des fonctions de manipulation de fichiers en C est interdite, ainsi que `std::string::replace`.
+## Summary
+Create a program that takes three parameters: a filename, a string `s1`, and a string `s2`. The program should copy the content of the file into a new file `<filename>.replace`, replacing all occurrences of `s1` with `s2`. Using C file manipulation functions is forbidden, as well as `std::string::replace`.
 
-## Fichiers à rendre
+## Files to Submit
 - `Makefile`
 - `main.cpp`
 - `*.cpp`
 - `*.[h, hpp]`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
 ```bash
 make
 ```
 
-### Exécution
+### Execution
 ```bash
 ./sedForLosers <filename> <s1> <s2>
 ```
 
-### Sortie (exemple)
+### Sample Output
 ```bash
-Contenu original du fichier :
+Original file content:
 Hello, world!
 
-Contenu du fichier <filename>.replace après exécution :
+Content of <filename>.replace after execution:
 Hello, universe!
 ```
