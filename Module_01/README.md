@@ -5,4 +5,3 @@
 - **ex03: Unnecessary violence** - Use pointers and references to manipulate objects in different ways.
 - **ex04: Sed is for losers** - Implement a program that reads a file and replaces specific strings within it.
 - **ex05: Harl 2.0** - Create a `Harl` class with functions to print messages at different levels of severity.
-- **ex06: Harl filter** - Extend the `Harl` class with filtering functionality for log levels.
