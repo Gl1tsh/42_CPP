@@ -1,9 +1,17 @@
-# Exercice 00 : BraiiiiiiinnnzzzZ
+# Exercise 00: BraiiiiiiinnnzzzZ
 
-## Résumé
-Cet exercice consiste à implémenter une classe `Zombie` avec un attribut privé `name` et une fonction membre `announce()` qui permet au zombie d'annoncer son nom. Vous devrez également implémenter deux fonctions supplémentaires : `newZombie()` et `randomChump()`, pour créer des zombies sur le tas ou la pile respectivement. L'objectif est de comprendre quand utiliser l'allocation dynamique de mémoire (tas) par rapport à l'allocation automatique (pile).
+## Summary
+This exercise involves implementing a `Zombie` class with a private `name` attribute of type `string`. The class must have a member function `void announce(void)` that prints a formatted message:
+```bash
+<name>: BraiiiiiiinnnzzzZ...
+```
+You also need to implement the following functions:
+- `Zombie* newZombie(std::string name);` creates a zombie on the heap and returns it.
+- `void randomChump(std::string name);` creates a zombie on the stack and makes it announce itself.
 
-## Fichiers à rendre
+The goal is to understand when to allocate zombies on the stack or heap. Ensure that zombies are destroyed when no longer needed, and implement a destructor that prints a debug message.
+
+## Files to Submit
 - `Makefile`
 - `main.cpp`
 - `Zombie.{h, hpp}`
@@ -11,22 +19,20 @@ Cet exercice consiste à implémenter une classe `Zombie` avec un attribut priv�
 - `newZombie.cpp`
 - `randomChump.cpp`
 
-## Compilation et exécution
+## Compilation and Execution
 
 ### Compilation
-Pour compiler le programme, exécutez la commande suivante :
 ```bash
 make
 ```
 
----
-### Exécution
-Pour exécuter le programme, utilisez la commande suivante :
+### Execution
 ```bash
 ./braiiiiiiinnnzzzZ
 ```
 
-Sortie :
+### Sample Output
 ```bash
-ZombieFoo: BraiiiiiiinnnzzzZ...
+Foo: BraiiiiiiinnnzzzZ...
+Destructor called for Foo
 ```
